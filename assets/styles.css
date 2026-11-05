@@ -86,7 +86,7 @@ main { padding-block: 32px 64px; }
 .rejilla-campos {
   display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px 18px; align-items: end;
 }
-.campo { display: grid; gap: 8px; min-width: 0; }
+.campo { display: grid; gap: 8px; min-width: 0; width: 100%; }
 .etiqueta { font-size: 14px; color: var(--muted); display: flex; justify-content: space-between; align-items: baseline; }
 .etiqueta output { color: var(--tinta); font-weight: 600; font-variant-numeric: tabular-nums; }
 .entrada {
@@ -94,8 +94,9 @@ main { padding-block: 32px 64px; }
   background: var(--bg); border: 1px solid var(--borde); border-radius: 10px;
 }
 .entrada:focus-within { border-color: var(--accent); }
+.entrada { min-width: 0; }
 .entrada input {
-  flex: 1; min-width: 0; border: 0; background: transparent; font: inherit; font-size: 17px; color: var(--tinta);
+  flex: 1 1 0; width: 0; min-width: 0; border: 0; background: transparent; font: inherit; font-size: 17px; color: var(--tinta);
   font-variant-numeric: tabular-nums; outline: none;
 }
 .entrada b { font-weight: 600; color: var(--muted); }
@@ -118,6 +119,27 @@ select:focus { border-color: var(--accent); }
 .resumen-datos div { background: var(--resumen-caja); border-radius: 10px; padding: 12px; min-width: 0; }
 .resumen-datos dt { font-size: 13px; opacity: .75; }
 .resumen-datos dd { margin: 4px 0 0; font-weight: 600; font-variant-numeric: tabular-nums; font-size: 16px; }
+
+/* ---------- portada ---------- */
+.portada { display: grid; gap: 14px; max-width: 760px; padding-block: clamp(20px, 5vw, 56px) 8px; }
+.sobretitulo { font-size: 14px; font-weight: 600; color: var(--accent-texto); letter-spacing: .02em; text-transform: uppercase; }
+.portada h1 { font-size: clamp(36px, 5.6vw, 64px); font-weight: 700; letter-spacing: -.035em; line-height: 1.02; }
+.lead { font-size: clamp(17px, 1.6vw, 20px); color: var(--tinta-suave); max-width: 56ch; }
+.acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.boton {
+  font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; border-radius: 999px;
+  padding: 11px 20px; border: 1px solid var(--tinta); background: transparent; color: var(--tinta);
+}
+.boton:hover { background: var(--hundido); }
+.boton.principal { background: var(--activo-bg); color: var(--activo-texto); }
+.boton.principal:hover { opacity: .88; background: var(--activo-bg); }
+.pasos { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 14px; padding: 0; }
+.pasos li { display: grid; gap: 10px; align-content: start; }
+.pasos span {
+  width: 32px; height: 32px; border-radius: 50%; background: var(--accent-suave); color: var(--accent-texto);
+  display: grid; place-items: center; font-weight: 650; font-size: 14px;
+}
+.aviso { font-size: 13px; color: var(--muted); }
 
 /* ---------- tabla de comparación ---------- */
 .cabecera-lista { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
@@ -181,6 +203,7 @@ table.cmp tr.mejor .barra-coste i { background: var(--accent); }
 @media (max-width: 960px) {
   .rejilla-campos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rejilla-tarjetas { grid-template-columns: 1fr; }
+  .pasos { grid-template-columns: 1fr; }
   .resumen { grid-template-columns: 1fr; }
 }
 

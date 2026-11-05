@@ -89,7 +89,6 @@ const DOMINIOS = {
   "MyInvestor": "myinvestor.es",
   "Bankinter": "bankinter.com",
   "Kutxabank": "kutxabank.es",
-  "Caja de Ingenieros": "cajaingenieros.com",
   "imagin": "imaginbank.es",
   "Abanca": "abanca.com",
 };
@@ -265,6 +264,13 @@ function iniciarPestanas() {
     });
   };
   botones.forEach((b) => b.addEventListener("click", () => mostrar(b.dataset.tab)));
+  // Botones y enlaces con data-ir llevan a otra pestaña.
+  document.querySelectorAll("[data-ir]").forEach((b) => b.addEventListener("click", (e) => {
+    e.preventDefault();
+    mostrar(b.dataset.ir);
+    if (b.dataset.ir === "simulador") document.getElementById("panel-simulador").scrollIntoView({ block: "start" });
+    else window.scrollTo({ top: 0 });
+  }));
   // Flechas izquierda y derecha entre pestañas.
   document.querySelector('[role="tablist"]').addEventListener("keydown", (e) => {
     if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;

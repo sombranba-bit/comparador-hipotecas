@@ -12,13 +12,14 @@
 </head>
 <body>
 
-<a class="saltar" href="#panel-simulador">Ir al simulador</a>
+<a class="saltar" href="#panel-simulador" data-ir="simulador">Ir al simulador</a>
 
 <header class="cabecera-web">
   <div class="contenedor fila-cabecera">
-    <a class="marca" href="#simulador">Hipoteca<span>·</span>clara</a>
+    <a class="marca" href="#inicio" data-ir="inicio">Hipoteca<span>·</span>clara</a>
     <nav class="pestanas" role="tablist" aria-label="Secciones">
-      <button type="button" role="tab" id="tab-simulador" aria-controls="panel-simulador" aria-selected="true" data-tab="simulador">Simulador</button>
+      <button type="button" role="tab" id="tab-inicio" aria-controls="panel-inicio" aria-selected="true" data-tab="inicio">Inicio</button>
+      <button type="button" role="tab" id="tab-simulador" aria-controls="panel-simulador" aria-selected="false" tabindex="-1" data-tab="simulador">Simulador</button>
       <button type="button" role="tab" id="tab-metodo" aria-controls="panel-metodo" aria-selected="false" tabindex="-1" data-tab="metodo">Cómo calculamos</button>
       <button type="button" role="tab" id="tab-preguntas" aria-controls="panel-preguntas" aria-selected="false" tabindex="-1" data-tab="preguntas">Preguntas</button>
       <button type="button" role="tab" id="tab-fuentes" aria-controls="panel-fuentes" aria-selected="false" tabindex="-1" data-tab="fuentes">Fuentes y avisos</button>
@@ -28,8 +29,47 @@
 
 <main class="contenedor">
 
+  <!-- ============ INICIO ============ -->
+  <section id="panel-inicio" role="tabpanel" aria-labelledby="tab-inicio" class="panel">
+    <div class="portada">
+      <p class="sobretitulo">Comparador de hipotecas</p>
+      <h1>Sabe cuánto pagarás de verdad</h1>
+      <p class="lead">Comparamos las hipotecas de quince entidades por su coste total: intereses, comisiones y el seguro que te exige cada una. La cuota mensual sola no basta para elegir.</p>
+      <div class="acciones">
+        <button type="button" class="boton principal" data-ir="simulador">Abrir el simulador</button>
+        <button type="button" class="boton" data-ir="metodo">Ver cómo calculamos</button>
+      </div>
+    </div>
+
+    <div class="rejilla-tarjetas">
+      <article class="tarjeta">
+        <h2>Coste total, no solo cuota</h2>
+        <p>Una cuota baja puede esconder un seguro caro. Sumamos todo lo que pagarás durante el plazo y ordenamos por ese número.</p>
+      </article>
+      <article class="tarjeta">
+        <h2>Datos de la propia entidad</h2>
+        <p>Tomamos los tipos y condiciones de la web oficial de cada banco. Cuando no lo conseguimos, lo indicamos en la tabla.</p>
+      </article>
+      <article class="tarjeta">
+        <h2>Euríbor al día</h2>
+        <p>Las hipotecas variables se calculan con el Euríbor a 12 meses. Junto a la tabla verás la fecha de ese dato y la de la última comprobación de precios.</p>
+      </article>
+    </div>
+
+    <div class="tarjeta">
+      <h2>Cómo usarlo en tres pasos</h2>
+      <ol class="pasos">
+        <li><span>1</span><p>Introduce el precio de la vivienda y tu ahorro para la entrada.</p></li>
+        <li><span>2</span><p>Elige el plazo, el tipo de hipoteca y si aceptas las vinculaciones.</p></li>
+        <li><span>3</span><p>Compara las ofertas por coste total y revisa las condiciones de la que te interese.</p></li>
+      </ol>
+    </div>
+
+    <p class="aviso">Información orientativa. No es una oferta vinculante ni asesoramiento financiero.</p>
+  </section>
+
   <!-- ============ SIMULADOR ============ -->
-  <section id="panel-simulador" role="tabpanel" aria-labelledby="tab-simulador" class="panel">
+  <section id="panel-simulador" role="tabpanel" aria-labelledby="tab-simulador" class="panel" hidden>
     <div class="intro">
       <h1>Compara hipotecas por coste real</h1>
       <p>Introduce tu caso. Ordenamos las ofertas por lo que pagarás en total: intereses, comisiones y seguros que exige cada entidad.</p>
@@ -66,7 +106,7 @@
         <label class="campo">
           <span class="etiqueta">¿Aceptas las vinculaciones?</span>
           <select id="vinc">
-            <option value="si">Sí, con seguros y productos vinculados</option>
+            <option value="si">Sí, con vinculaciones</option>
             <option value="no">No, sin vinculaciones</option>
           </select>
         </label>
