@@ -45,7 +45,7 @@
       "producto": "Hipoteca Fija",
       "tipo": "fija",
       "tin_bonificado": 2.75,
-      "tae_bonificada": 3.58,
+      "tae_bonificada": 3.67,
       "tin_sin_vinculacion": 3.75,
       "tae_sin_vinculacion": 4.23,
       "plazo_max": 30,
@@ -54,7 +54,7 @@
       "vinculaciones": "4 productos (nómina, seguros de vida, hogar y protección de pagos)",
       "fuente": "https://www.rankia.com/blog/mejores-hipotecas/3091129-mejores-hipotecas-fijas",
       "fuente_nombre": "Rankia · nov. 2026",
-      "nota": "Otra fuente da 3,58 % de TAE bonificada; se usa 3,67 %, la de la tabla de ranking."
+      "nota": "Fuentes de julio y agosto de 2026 dan 3,58 % TAE; la de octubre da 3,67 %. Verificar con la entidad."
     },
     {
       "id": "openbank-fija",
@@ -100,8 +100,8 @@
       "tipo": "fija",
       "tin_bonificado": 2.96,
       "tae_bonificada": 3.65,
-      "tin_sin_vinculacion": null,
-      "tae_sin_vinculacion": null,
+      "tin_sin_vinculacion": 3.96,
+      "tae_sin_vinculacion": 4.16,
       "plazo_max": 30,
       "ltv_max": 80,
       "apertura_pct": null,
@@ -133,8 +133,8 @@
       "logo": null,
       "producto": "Hipoteca Fija Bonificada",
       "tipo": "fija",
-      "tin_bonificado": 2.6,
-      "tae_bonificada": 3.42,
+      "tin_bonificado": 2.0,
+      "tae_bonificada": 2.1,
       "tin_sin_vinculacion": null,
       "tae_sin_vinculacion": null,
       "plazo_max": 30,
@@ -143,7 +143,7 @@
       "vinculaciones": "nómina (−0,50 %), seguro de hogar (−0,20 %) y seguro de vida (−0,20 %); opcionales (−0,10 %)",
       "fuente": "https://www.rastreator.com/hipotecas/guias/mejores-hipotecas-tipo-fijo",
       "fuente_nombre": "Rastreator · nov. 2026",
-      "nota": "Comisión de amortización del 2 % los 10 primeros años y del 1,5 % después."
+      "nota": "Fuentes de agosto y septiembre de 2026 dan 2 % TIN con nómina, seguro de hogar y de vida. Verificar con la entidad."
     },
     {
       "id": "cajamar-hipoteon-fija",

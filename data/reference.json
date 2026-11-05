@@ -1,7 +1,7 @@
 {
   "actualizado": "2026-11-05T00:00:00Z",
-  "euribor12m": null,
-  "euribor12mPeriodo": null,
+  "euribor12m": 3.239,
+  "euribor12mPeriodo": "2026-10-31",
   "tipoMedioVivienda": null,
-  "fuente": "Euríbor 12 meses sin dato: no se ha podido confirmar el valor oficial del BCE desde este entorno. El script update-data.mjs lo rellena en GitHub Actions."
+  "fuente": "Euríbor 12 meses: media mensual de octubre de 2026 (3,239 %), según hipotecas.me y futurfinances (datos del Banco de España). No es el valor diario del 4 de noviembre, que no he podido confirmar."
 }
