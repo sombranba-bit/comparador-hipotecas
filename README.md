@@ -36,7 +36,7 @@ El workflow `actualizar-datos.yml` se ejecuta cada día a las 06:17 UTC, actuali
 1. **Verificar cada oferta** en la FiPer o en la web de la entidad. Las fuentes discrepan en algunos casos (TAE de Sabadell, TIN de BBVA).
 2. **Completar los `null`** de `data/offers.json`, sobre todo el TIN sin vinculación de Santander y la comisión de apertura de varias entidades.
 3. **Comprobar las claves del BCE** en `scripts/update-data.mjs`. Desde esta sesión no hay acceso al BCE.
-4. **Logotipos y fotos**: no se han descargado. Las entidades usan un monograma hasta que haya logos con permiso de uso. Las fotos de Commons con licencia CC BY-SA sí son posibles, pero hay que descargarlas desde un entorno con acceso a `upload.wikimedia.org`.
+4. **Logotipos y fotos**: el logo de CaixaBank (`assets/logos/caixabank.svg`, icono CC0 de simple-icons; la marca sigue siendo de CaixaBank) ya se muestra. El resto de entidades usa monograma. Las fotos de `assets/fotos/` están descargadas pero no se publican hasta confirmar autor y licencia de cada una en su página de Wikimedia Commons.
 5. **Activar GitHub Pages** (rama `main`, carpeta raíz).
 6. **Revisar el texto legal**: la web se presenta como informativa, no como intermediario de crédito.
 

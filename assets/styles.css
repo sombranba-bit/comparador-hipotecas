@@ -5,14 +5,14 @@
   --hundido: #efefeb;
   --tinta: #111111;
   --tinta-suave: #3a3a38;
-  --muted: #6b6b68;
+  --muted: #4f4f4c;
   --accent: #a86f00;
   --accent-texto: #7d5200;
   --accent-suave: #fbf0d9;
   --ease: cubic-bezier(.22, 1, .36, 1);
   --fuente: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  /* Escala tipográfica: 14 · 17 · 20 · 28 · 48 · 72 */
-  --t-sm: 14px; --t-body: 17px; --t-lead: 20px; --t-h3: 20px; --t-h2: clamp(28px, 3.4vw, 44px); --t-h1: clamp(40px, 5vw, 72px);
+  /* Escala tipográfica: 15 · 17 · 20 · 44 · 72 · 144 */
+  --t-sm: 16px; --t-body: 17px; --t-lead: 20px; --t-h3: 20px; --t-h2: clamp(28px, 3.4vw, 44px); --t-h1: clamp(40px, 5vw, 72px);
   --margen: clamp(20px, 5vw, 64px);
 }
 
@@ -96,7 +96,7 @@ main > section { width: min(calc(100% - 2 * var(--margen)), 1200px); margin-inli
 .panel-datos, .panel-ofertas {
   background: var(--superficie); border-radius: 16px; padding: clamp(24px, 3vw, 36px);
 }
-.panel-datos { position: sticky; top: 96px; }
+.panel-datos { position: static; }
 
 .campo { display: block; margin-bottom: 22px; }
 .campo > span {
@@ -152,7 +152,7 @@ select:focus { background: var(--hundido); outline: 2px solid var(--accent); out
 .oferta.mejor h3::after { content: "  · mejor opción"; color: var(--accent-texto); font-weight: 500; font-size: var(--t-sm); }
 .oferta.no-apta { opacity: .55; }
 .oferta h3 { margin: 0 0 4px; font-size: var(--t-body); }
-.meta { margin: 0; font-size: var(--t-sm); color: var(--muted); }
+.meta { margin: 0; font-size: var(--t-sm); color: var(--tinta-suave); }
 .meta .sep { margin: 0 6px; }
 .dato small { display: block; font-size: var(--t-sm); color: var(--muted); }
 .dato strong { font-size: var(--t-body); font-variant-numeric: tabular-nums; font-weight: 600; }
@@ -208,7 +208,6 @@ select:focus { background: var(--hundido); outline: 2px solid var(--accent); out
 /* ---------- tablet y móvil ---------- */
 @media (max-width: 920px) {
   .portada, .simulador, .preguntas { grid-template-columns: minmax(0, 1fr); }
-  .panel-datos { position: static; }
   .columnas { grid-template-columns: minmax(0, 1fr); }
   .barra nav { display: none; }
 }
@@ -237,3 +236,15 @@ select:focus { background: var(--hundido); outline: 2px solid var(--accent); out
 /* ---------- fuente de cada oferta ---------- */
 .fuente { display: inline-block; margin-top: 8px; font-size: var(--t-sm); color: var(--accent-texto); text-decoration: underline; text-underline-offset: 3px; }
 .fuente:hover { color: var(--tinta); }
+
+/* ---------- logotipos, notas y fotografías ---------- */
+.logo { flex: none; width: 36px; height: 36px; object-fit: contain; border-radius: 9px; background: var(--superficie); padding: 4px; }
+.nota-oferta { margin: 6px 0 0; font-size: var(--t-sm); color: var(--tinta-suave); }
+.foto-ancha { margin: 0 auto; max-width: 1200px; padding: 0 var(--margen); }
+.foto-ancha img, .fotos-dobles img { width: 100%; height: auto; display: block; border-radius: 16px; object-fit: cover; }
+.foto-ancha img { max-height: 70vh; object-fit: cover; }
+.foto-ancha figcaption, .fotos-dobles figcaption { margin-top: 10px; font-size: var(--t-sm); color: var(--muted); max-width: 70ch; }
+.foto-ancha figcaption a, .fotos-dobles figcaption a, .creditos a { color: var(--accent-texto); }
+.fotos-dobles { max-width: 1200px; margin-inline: auto; width: min(calc(100% - 2 * var(--margen)), 1200px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 40px); padding-block: clamp(48px, 6vw, 80px); }
+.creditos { margin: 0 0 12px; font-size: var(--t-sm); }
+@media (max-width: 920px) { .fotos-dobles { grid-template-columns: 1fr; } }

@@ -100,7 +100,9 @@ function renderLista(resultados, ltv, conVinc) {
         <li class="oferta reveal ${r === mejor ? "mejor" : ""} ${r.apta ? "" : "no-apta"}" style="transition-delay:${Math.min(i, 6) * 60}ms">
           <div>
             <div class="entidad">
-              <span class="monograma" aria-hidden="true">${escapar(iniciales(o.entidad))}</span>
+              ${o.logo
+                ? `<img class="logo" src="${escapar(o.logo)}" alt="" width="36" height="36" decoding="async">`
+                : `<span class="monograma" aria-hidden="true">${escapar(iniciales(o.entidad))}</span>`}
               <div>
                 <h3>${escapar(o.entidad)}</h3>
                 <p class="meta">${escapar(o.producto)}<span class="sep">·</span>${ETIQUETA_TIPO[o.tipo]}</p>
