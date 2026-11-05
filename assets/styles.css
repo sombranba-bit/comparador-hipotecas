@@ -110,6 +110,7 @@ select:focus { border-color: var(--accent); }
 /* ---------- ejemplo ---------- */
 .caso { display: grid; gap: 6px; }
 .caso h2 { margin-bottom: 4px; }
+.aviso-importante { margin-top: 6px; padding: 10px 12px; border-left: 3px solid var(--accent); background: var(--accent-suave); border-radius: 8px; color: var(--tinta); }
 
 /* ---------- resumen ---------- */
 .resumen {
