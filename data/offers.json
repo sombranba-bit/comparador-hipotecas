@@ -1,0 +1,11 @@
+{
+  "_aviso": "DATOS DE EJEMPLO. Sustituir por ofertas verificadas (folleto FiPer / documento de información precontractual) antes de publicar.",
+  "actualizado": "2026-11-05",
+  "ofertas": [
+    { "id": "e1", "entidad": "Entidad ejemplo A", "tipo": "fija", "tin": 2.65, "tae": 3.05, "plazo_max": 30, "ltv_max": 80, "apertura_pct": 0.0, "tasacion": 0, "notaria_estimada": 900, "vinculacion_seguro_anual": 360, "nota": "Requiere seguro de hogar y de vida con la entidad" },
+    { "id": "e2", "entidad": "Entidad ejemplo B", "tipo": "fija", "tin": 2.95, "tae": 3.12, "plazo_max": 30, "ltv_max": 80, "apertura_pct": 0.0, "tasacion": 0, "notaria_estimada": 900, "vinculacion_seguro_anual": 0, "nota": "Sin vinculaciones" },
+    { "id": "e3", "entidad": "Entidad ejemplo C", "tipo": "variable", "diferencial": 0.79, "tae": 2.95, "plazo_max": 30, "ltv_max": 80, "apertura_pct": 0.0, "tasacion": 0, "notaria_estimada": 900, "vinculacion_seguro_anual": 240, "nota": "Euríbor 12M + diferencial, con domiciliación de nómina" },
+    { "id": "e4", "entidad": "Entidad ejemplo D", "tipo": "variable", "diferencial": 0.99, "tae": 2.78, "plazo_max": 25, "ltv_max": 70, "apertura_pct": 0.5, "tasacion": 0, "notaria_estimada": 900, "vinculacion_seguro_anual": 0, "nota": "Sin vinculaciones, comisión de apertura 0,5 %" },
+    { "id": "e5", "entidad": "Entidad ejemplo E", "tipo": "mixta", "tin": 2.40, "tae": 3.35, "plazo_max": 30, "ltv_max": 80, "apertura_pct": 0.5, "tasacion": 0, "notaria_estimada": 900, "vinculacion_seguro_anual": 300, "nota": "Fija 5 años, después variable" }
+  ]
+}

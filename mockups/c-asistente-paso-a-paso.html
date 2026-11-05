@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maqueta C · Asistente paso a paso</title>
+<style>
+:root{--f:#f4f1ea;--t:#1d1b18;--s:#6b655b;--a:#b4532a;--c:#fff;--l:#e6e0d3}
+*{box-sizing:border-box}body{margin:0;background:var(--f);color:var(--t);font:17px/1.55 Inter,system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+header{display:flex;justify-content:space-between;padding:20px clamp(16px,4vw,48px)}
+.m{font-weight:700}.m span{color:var(--a)}
+.prog{height:4px;background:var(--l);margin:0 clamp(16px,4vw,48px);border-radius:4px;overflow:hidden}
+.prog i{display:block;height:100%;width:50%;background:var(--a);transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.paso{flex:1;display:grid;place-items:center;padding:40px 16px}
+.caja{width:min(640px,100%);animation:entra .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes entra{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.n{color:var(--s);font-size:.9rem;margin-bottom:10px}
+h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.08;letter-spacing:-.03em;margin:0 0 28px}
+.opciones{display:grid;gap:12px}
+.op{display:flex;justify-content:space-between;align-items:center;background:var(--c);border:2px solid transparent;border-radius:16px;padding:20px 22px;cursor:pointer;font:inherit;text-align:left;color:inherit;transition:transform .2s cubic-bezier(.2,.7,.2,1),border-color .2s,box-shadow .2s;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.op:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px rgba(0,0,0,.4)}
+.op.sel{border-color:var(--a)}
+.op small{color:var(--s)}
+.pie{display:flex;justify-content:space-between;align-items:center;padding:20px clamp(16px,4vw,48px);border-top:1px solid var(--l)}
+.btn{background:var(--a);color:#fff;border:0;border-radius:99px;padding:14px 26px;font:600 1rem Inter,system-ui,sans-serif;cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.ghost{background:none;border:0;color:var(--s);font:inherit;cursor:pointer}
+.res{background:var(--c);border-radius:20px;padding:24px;box-shadow:0 20px 40px -28px rgba(0,0,0,.4)}
+.res strong{font-size:2.4rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--a)}
+</style></head><body>
+<header><div class="m">Hipoteca<span>·</span>clara</div><span style="color:var(--s)">Paso 2 de 4</span></header>
+<div class="prog" aria-hidden="true"><i></i></div>
+<main class="paso"><section class="caja">
+  <p class="n">Tu vivienda</p>
+  <h1>¿Cuánto ahorras para la entrada?</h1>
+  <div class="opciones" role="radiogroup" aria-label="Ahorro para la entrada">
+    <button class="op" role="radio" aria-checked="false"><span>Menos de 20 %</span><small>Te pedirán seguro extra</small></button>
+    <button class="op sel" role="radio" aria-checked="true"><span>Entre 20 % y 30 %</span><small>Más ofertas disponibles</small></button>
+    <button class="op" role="radio" aria-checked="false"><span>Más del 30 %</span><small>Tipos más bajos</small></button>
+  </div>
+  <div class="res" style="margin-top:22px"><span style="color:var(--s)">Tu cuota aproximada en la mejor oferta</span><br><strong>686 €/mes</strong></div>
+</section></main>
+<footer class="pie"><button class="ghost">Atrás</button><button class="btn">Siguiente</button></footer>
+</body></html>

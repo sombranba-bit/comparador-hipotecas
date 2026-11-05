@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compara hipotecas por coste real</title>
+  <meta name="description" content="Compara hipotecas fijas, variables y mixtas por cuota y coste total, con comisiones y seguros incluidos y datos oficiales del BCE.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<a class="saltar" href="#simulador">Ir al simulador</a>
+
+<header class="barra">
+  <a class="marca" href="#inicio">Hipoteca<span>·</span>clara</a>
+  <nav aria-label="Principal">
+    <a href="#ofertas">Ofertas</a>
+    <a href="#metodo">Método</a>
+    <a href="#preguntas">Preguntas</a>
+  </nav>
+</header>
+
+<main id="inicio">
+
+  <section class="portada">
+    <div class="portada-texto">
+      <h1 class="reveal">Compara hipotecas por coste real</h1>
+      <p class="entradilla reveal">Introduce tu caso y ordenamos las ofertas por lo que vas a pagar en total: intereses, comisiones y seguros que te exige cada entidad.</p>
+      <a class="accion reveal" href="#simulador">Calcular mi caso</a>
+    </div>
+    <aside class="lectura reveal" aria-label="Cómo leer los resultados">
+      <p><strong>Coste total, no solo TAE</strong>Sumamos intereses, comisiones y seguros que exige la vinculación.</p>
+      <p><strong>Vinculaciones a la vista</strong>Cada oferta indica si te obliga a contratar seguros o productos.</p>
+      <p><strong>Variables con dato oficial</strong>El Euríbor a 12 meses sale del Banco Central Europeo.</p>
+    </aside>
+  </section>
+
+  <section class="simulador" id="simulador" aria-labelledby="titulo-sim">
+    <h2 id="titulo-sim" class="sr-only">Simulador de hipoteca</h2>
+
+    <div class="panel-datos reveal">
+      <form id="form" novalidate>
+        <label class="campo">
+          <span>Precio de la vivienda</span>
+          <div class="entrada"><input id="precio" type="number" min="30000" step="1000" value="220000" inputmode="numeric"><b>€</b></div>
+        </label>
+        <label class="campo">
+          <span>Ahorro para la entrada</span>
+          <div class="entrada"><input id="ahorro" type="number" min="0" step="1000" value="44000" inputmode="numeric"><b>€</b></div>
+        </label>
+        <label class="campo">
+          <span>Plazo <output id="plazo-valor" for="plazo">30 años</output></span>
+          <input id="plazo" type="range" min="5" max="40" value="30" class="rango">
+        </label>
+        <label class="campo">
+          <span>Tipo de interés</span>
+          <select id="tipo">
+            <option value="todas">Todas</option>
+            <option value="fija">Fija</option>
+            <option value="variable">Variable</option>
+            <option value="mixta">Mixta</option>
+          </select>
+        </label>
+      </form>
+
+      <div class="resumen" aria-live="polite">
+        <p class="resumen-etiqueta">Cuota mensual, mejor oferta</p>
+        <p class="resumen-cifra" id="cuota-mejor">—</p>
+        <dl class="resumen-datos">
+          <div><dt>Préstamo</dt><dd id="prestamo">—</dd></div>
+          <div><dt>LTV</dt><dd id="ltv">—</dd></div>
+          <div><dt>Aptas</dt><dd id="aptas">—</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="panel-ofertas reveal" id="ofertas">
+      <div class="cabecera">
+        <h2>Ofertas por coste total</h2>
+        <p id="nota-datos" class="nota"></p>
+      </div>
+      <ol class="lista" id="lista"></ol>
+    </div>
+  </section>
+
+  <section class="metodo" id="metodo" aria-labelledby="titulo-metodo">
+    <h2 id="titulo-metodo" class="reveal">Cómo calculamos el coste</h2>
+    <div class="columnas">
+      <p class="reveal"><strong>La cuota</strong> sale de la fórmula francesa de amortización con el tipo de cada oferta y el plazo que elijas. Es la misma que usan los bancos.</p>
+      <p class="reveal"><strong>El coste total</strong> suma los intereses y las comisiones: apertura, tasación, notaría estimada y el seguro que exige la vinculación durante todo el plazo.</p>
+      <p class="reveal"><strong>El variable</strong> usa el Euríbor a 12 meses del BCE más el diferencial. Se actualiza cada día con datos oficiales.</p>
+    </div>
+  </section>
+
+  <section class="preguntas" id="preguntas" aria-labelledby="titulo-faq">
+    <h2 id="titulo-faq" class="reveal">Preguntas</h2>
+    <details class="reveal"><summary>¿Qué es el LTV?</summary><p>El préstamo dividido entre el valor de la vivienda. Muchas entidades no financian más del 80 %.</p></details>
+    <details class="reveal"><summary>¿Por qué no ordenamos solo por TAE?</summary><p>La TAE no siempre recoge los seguros que te exige la vinculación. Por eso comparamos el coste total en euros.</p></details>
+    <details class="reveal"><summary>¿Sois intermediarios de crédito?</summary><p>No. Esta web es informativa y no concede préstamos. Para una oferta vinculante acude a la entidad o a un intermediario inscrito en el Banco de España.</p></details>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <p class="pie-nombre">Hipoteca·clara</p>
+  <p>Información orientativa. Indicadores: Banco Central Europeo. No es una oferta vinculante ni asesoramiento financiero. Las ofertas mostradas son de ejemplo hasta que se verifiquen.</p>
+</footer>
+
+<script src="assets/app.js" type="module"></script>
+</body>
+</html>

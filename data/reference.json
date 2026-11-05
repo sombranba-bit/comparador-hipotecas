@@ -1,0 +1,6 @@
+{
+  "actualizado": null,
+  "euribor12m": null,
+  "tipoMedioVivienda": null,
+  "fuente": "Banco Central Europeo — Data Portal (se rellena con scripts/update-data.mjs)"
+}

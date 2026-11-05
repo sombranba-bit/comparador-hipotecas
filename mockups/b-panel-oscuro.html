@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maqueta B · Panel oscuro</title>
+<style>
+:root{--f:#0e1412;--p:#16201d;--t:#eef3f1;--s:#8fa39c;--a:#3fd0a4;--l:#243430}
+*{box-sizing:border-box}body{margin:0;background:var(--f);color:var(--t);font:16px/1.5 Inter,system-ui,sans-serif}
+.g{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+aside{border-right:1px solid var(--l);padding:28px 20px}
+aside .m{font-weight:700;margin-bottom:36px}aside .m span{color:var(--a)}
+aside a{display:block;padding:10px 12px;border-radius:10px;color:var(--s);text-decoration:none;margin-bottom:4px}
+aside a.on{background:var(--p);color:var(--t)}
+main{padding:32px clamp(16px,3vw,44px)}
+h1{font-size:2rem;letter-spacing:-.02em;margin:0 0 6px}.sub{color:var(--s);margin:0 0 28px}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.k{background:var(--p);border:1px solid var(--l);border-radius:16px;padding:18px}
+.k small{color:var(--s)}.k strong{display:block;font-size:1.7rem;font-variant-numeric:tabular-nums;margin-top:4px}
+.k.hi{background:linear-gradient(0deg,#16201d,#16201d)}.k.hi strong{color:var(--a)}
+.dos{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.card{background:var(--p);border:1px solid var(--l);border-radius:16px;padding:20px}
+.card h2{font-size:1rem;margin:0 0 14px}
+.fila{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--l);font-variant-numeric:tabular-nums}
+.fila:first-of-type{border-top:0}
+.bar{height:8px;border-radius:8px;background:#1d2a26;overflow:hidden}.bar i{display:block;height:100%;background:var(--a);border-radius:8px;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.sl{width:100%;accent-color:var(--a)}
+.lab{display:flex;justify-content:space-between;font-size:.85rem;color:var(--s);margin-top:14px}
+@media(max-width:900px){.g{grid-template-columns:1fr}aside{display:none}.kpi{grid-template-columns:1fr 1fr}.dos{grid-template-columns:1fr}}
+</style></head><body><div class="g">
+<aside><div class="m">Hipoteca<span>·</span>clara</div>
+  <a class="on" href="#">Comparador</a><a href="#">Simulador</a><a href="#">Ofertas</a><a href="#">Método</a></aside>
+<main>
+  <h1>Comparador de hipotecas</h1>
+  <p class="sub">Precio 220.000 € · Entrada 44.000 € · Plazo 30 años</p>
+  <div class="kpi">
+    <div class="k"><small>Préstamo</small><strong>176.000 €</strong></div>
+    <div class="k hi"><small>Cuota mejor oferta</small><strong>686 €</strong></div>
+    <div class="k"><small>LTV</small><strong>80 %</strong></div>
+    <div class="k"><small>Ofertas aptas</small><strong>3 de 5</strong></div>
+  </div>
+  <div class="dos">
+    <div class="card"><h2>Coste total por oferta</h2>
+      <div class="fila"><span>Entidad ejemplo E · mixta</span><span>81.847 €</span><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="fila"><span>Entidad ejemplo B · fija</span><span>90.323 €</span><div class="bar"><i style="width:99%"></i></div></div>
+      <div class="fila"><span>Entidad ejemplo A · fija</span><span>91.018 €</span><div class="bar"><i style="width:100%"></i></div></div>
+    </div>
+    <div class="card"><h2>Ajusta tu caso</h2>
+      <div class="lab"><span>Plazo</span><span>30 años</span></div><input class="sl" type="range" min="5" max="40" value="30">
+      <div class="lab"><span>Entrada</span><span>20 %</span></div><input class="sl" type="range" min="0" max="50" value="20">
+      <div class="lab"><span>Tipo</span><span>Todas</span></div>
+    </div>
+  </div>
+</main></div></body></html>
