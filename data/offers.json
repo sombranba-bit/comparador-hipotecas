@@ -17,8 +17,9 @@
       "ltv_max": 80,
       "apertura_pct": null,
       "vinculaciones": "6 productos (nómina, tarjeta, recibos, seguros y aportaciones a fondos)",
-      "fuente": "https://www.rankia.com/blog/mejores-hipotecas/3091129-mejores-hipotecas-fijas",
-      "fuente_nombre": "Rankia · nov. 2026"
+      "fuente": "https://www.euribor.com.es/2026/07/13/mejores-hipotecas-2/",
+      "fuente_nombre": "euribor.com.es · jul. 2026",
+      "seguro_vinculado": true
     },
     {
       "id": "banca-march-avantio",
@@ -35,8 +36,9 @@
       "apertura_pct": 0.15,
       "vinculaciones": "nómina, seguro de vida y seguro de hogar",
       "fuente": "https://www.rankia.com/blog/mejores-hipotecas/5725793-mejores-hipotecas",
-      "fuente_nombre": "Rankia · nov. 2026",
-      "nota": "TIN sin vinculación no publicado en la fuente. Comisión de apertura 0,15 %."
+      "fuente_nombre": "Rankia · 2026",
+      "nota": "TIN sin vinculación no publicado en la fuente. Comisión de apertura 0,15 %.",
+      "seguro_vinculado": true
     },
     {
       "id": "sabadell-fija",
@@ -52,9 +54,10 @@
       "ltv_max": 80,
       "apertura_pct": 0,
       "vinculaciones": "4 productos (nómina, seguros de vida, hogar y protección de pagos)",
-      "fuente": "https://www.rankia.com/blog/mejores-hipotecas/3091129-mejores-hipotecas-fijas",
-      "fuente_nombre": "Rankia · nov. 2026",
-      "nota": "3,58 % TAE según Kelisto (septiembre), Selectra, Rankia e iAhorro. HelpMyCash (octubre) da 3,67 %. Verificar con la entidad."
+      "fuente": "https://www.rankia.com/blog/mejores-hipotecas/5725793-mejores-hipotecas",
+      "fuente_nombre": "Rankia · 2026",
+      "nota": "3,58 % TAE según Kelisto (septiembre), Selectra, Rankia e iAhorro. HelpMyCash (octubre) da 3,67 %. Verificar con la entidad.",
+      "seguro_vinculado": true
     },
     {
       "id": "openbank-fija",
@@ -70,9 +73,10 @@
       "ltv_max": 80,
       "apertura_pct": 0,
       "vinculaciones": "seguro de hogar, seguro de vida y domiciliación de nómina",
-      "fuente": "https://www.rankia.com/blog/mejores-hipotecas/3091129-mejores-hipotecas-fijas",
-      "fuente_nombre": "Rankia · nov. 2026",
-      "nota": "Otras fuentes dan 3,44 % de TAE bonificada a 30 años; el TIN del texto de Bankkers difiere de la tabla."
+      "fuente": "https://selectra.es/finanzas/hipotecas/hipoteca-fija-mas-barata",
+      "fuente_nombre": "Selectra · jun. 2026",
+      "nota": "Otras fuentes dan 3,44 % de TAE bonificada a 30 años; el TIN del texto de Bankkers difiere de la tabla.",
+      "seguro_vinculado": true
     },
     {
       "id": "bbva-fija",
@@ -88,9 +92,10 @@
       "ltv_max": 80,
       "apertura_pct": 0,
       "vinculaciones": "nómina, seguro de hogar y seguro de amortización (dos bloques de bonificación)",
-      "fuente": "https://www.rankia.com/blog/mejores-hipotecas/3091129-mejores-hipotecas-fijas",
-      "fuente_nombre": "Rankia · nov. 2026",
-      "nota": "Otras fuentes dan 2,95 % de TIN bonificado (3,78 % de TAE) y Rastreator 2,55 % sin bonificación. Dato pendiente de confirmar."
+      "fuente": "https://www.hipotecas.me/bancos/bbva",
+      "fuente_nombre": "hipotecas.me · 2026",
+      "nota": "Otras fuentes dan 2,95 % de TIN bonificado (3,78 % de TAE) y Rastreator 2,55 % sin bonificación. Dato pendiente de confirmar.",
+      "seguro_vinculado": true
     },
     {
       "id": "santander-fija",
@@ -106,8 +111,9 @@
       "ltv_max": 80,
       "apertura_pct": null,
       "vinculaciones": "bonificada con productos vinculados",
-      "fuente": "https://www.elnacional.cat/oneconomia/es/economia/vas-firmar-hipoteca-fija-en-noviembre-estas-son-10-mas-baratas-255-tin-klt5_1719945_102.html",
-      "fuente_nombre": "ON Economia · nov. 2026"
+      "fuente": "https://sincomisiones.org/hipotecas/entidades-financieras/santander/fija",
+      "fuente_nombre": "sincomisiones · 2026",
+      "seguro_vinculado": true
     },
     {
       "id": "caixabank-casafacil-fija",
@@ -123,9 +129,10 @@
       "ltv_max": 80,
       "apertura_pct": null,
       "vinculaciones": "nómina, 3 recibos y tarjeta, hogar, vida o salud y alarma",
-      "fuente": "https://www.rankia.com/blog/mejores-hipotecas/3091129-mejores-hipotecas-fijas",
-      "fuente_nombre": "Rankia · nov. 2026",
-      "nota": "Rastreator indica 2,80 % de TIN bonificado con domiciliación de nómina. Dato pendiente de confirmar."
+      "fuente": "https://sincomisiones.org/hipotecas/lacaixa-opiniones/fija",
+      "fuente_nombre": "sincomisiones · 2026",
+      "nota": "Rastreator indica 2,80 % de TIN bonificado con domiciliación de nómina. Dato pendiente de confirmar.",
+      "seguro_vinculado": true
     },
     {
       "id": "unicaja-fija",
@@ -141,9 +148,10 @@
       "ltv_max": 80,
       "apertura_pct": null,
       "vinculaciones": "nómina (−0,50 %), seguro de hogar (−0,20 %) y seguro de vida (−0,20 %); opcionales (−0,10 %)",
-      "fuente": "https://www.rastreator.com/hipotecas/guias/mejores-hipotecas-tipo-fijo",
-      "fuente_nombre": "Rastreator · nov. 2026",
-      "nota": "Fuentes de agosto y septiembre de 2026 dan 2 % TIN con nómina, seguro de hogar y de vida. Verificar con la entidad."
+      "fuente": "https://www.rastreator.com/hipotecas/guias/hipotecas-mas-baratas",
+      "fuente_nombre": "Rastreator · ago. 2026",
+      "nota": "Fuentes de agosto y septiembre de 2026 dan 2 % TIN con nómina, seguro de hogar y de vida. Verificar con la entidad.",
+      "seguro_vinculado": true
     },
     {
       "id": "cajamar-hipoteon-fija",
@@ -159,9 +167,10 @@
       "ltv_max": 80,
       "apertura_pct": null,
       "vinculaciones": "no especificadas en la fuente",
-      "fuente": "https://www.elnacional.cat/oneconomia/es/economia/vas-firmar-hipoteca-fija-en-noviembre-estas-son-10-mas-baratas-255-tin-klt5_1719945_102.html",
-      "fuente_nombre": "ON Economia · nov. 2026",
-      "nota": "Relanzamiento de agosto de 2026 según Roams y HelpMyCash. Exige muchos productos vinculados para el tipo bonificado."
+      "fuente": "https://roams.es/actualidad/finanzas/cajamar-recupera-hipoteca-fija-esto-exige-a-cambio/",
+      "fuente_nombre": "Roams · 2026",
+      "nota": "Relanzamiento de agosto de 2026 según Roams y HelpMyCash. Exige muchos productos vinculados para el tipo bonificado.",
+      "seguro_vinculado": true
     },
     {
       "id": "myinvestor-sin-mochila",
@@ -176,9 +185,11 @@
       "plazo_max": null,
       "ltv_max": 80,
       "apertura_pct": null,
-      "vinculaciones": "ninguna: el precio no depende de productos vinculados",
-      "fuente": "https://www.hipotecas.me/bancos/hipoteca-caja-rural-jaen-fija-opiniones",
-      "fuente_nombre": "hipotecas.me · nov. 2026"
+      "vinculaciones": "Sin vinculaciones obligatorias",
+      "fuente": "https://www.hipotecas.me/comparador-hipotecas?tipo=fija",
+      "fuente_nombre": "hipotecas.me · 2026",
+      "seguro_vinculado": false,
+      "nota": "Mismo tipo con o sin vinculaciones. Fuente de la lista de hipotecas.me."
     },
     {
       "id": "bankinter-fija",
@@ -194,9 +205,10 @@
       "ltv_max": 80,
       "apertura_pct": 0,
       "vinculaciones": "seguro de hogar y de vida (la tabla de Rastreator añade domiciliación de nómina)",
-      "fuente": "https://www.rastreator.com/hipotecas/guias/mejores-hipotecas-tipo-fijo",
-      "fuente_nombre": "Rastreator · nov. 2026",
-      "nota": "3,20 % TIN a 20 años según Rankia, Kelisto y HelpMyCash. Rastreator (agosto) da 2,85 % TIN y 3,42 % TAE a 25 años. Verificar con la entidad."
+      "fuente": "https://www.rankia.com/hipotecas/hipoteca-fija-bankinter-bankinter",
+      "fuente_nombre": "Rankia · 2026",
+      "nota": "3,20 % TIN a 20 años según Rankia, Kelisto y HelpMyCash. Rastreator (agosto) da 2,85 % TIN y 3,42 % TAE a 25 años. Verificar con la entidad.",
+      "seguro_vinculado": true
     },
     {
       "id": "kutxabank-variable",
@@ -233,7 +245,8 @@
       "vinculaciones": "Sin detalle verificado: consultar con la entidad",
       "fuente": "https://www.helpmycash.com/blog/buscas-una-buena-hipoteca-fija-antes-de-contratar-una-pregunta-en-bankinter",
       "fuente_nombre": "HelpMyCash · ago. 2026",
-      "nota": "Solo consta el dato con vinculación. Sin dato sin vinculación."
+      "nota": "Solo consta el dato con vinculación. Sin dato sin vinculación.",
+      "seguro_vinculado": true
     },
     {
       "id": "imagin-fija",
@@ -251,7 +264,8 @@
       "vinculaciones": "Sin detalle verificado: consultar con la entidad",
       "fuente": "https://www.helpmycash.com/blog/buscas-una-buena-hipoteca-fija-antes-de-contratar-una-pregunta-en-bankinter",
       "fuente_nombre": "HelpMyCash · ago. 2026",
-      "nota": "Banco digital. Sin plazo máximo verificado."
+      "nota": "Banco digital. Sin plazo máximo verificado.",
+      "seguro_vinculado": true
     },
     {
       "id": "abanca-mari-carmen-fija",
@@ -269,7 +283,8 @@
       "vinculaciones": "Sin detalle verificado: consultar con la entidad",
       "fuente": "https://www.euribor.com.es/2026/07/13/mejores-hipotecas-2/",
       "fuente_nombre": "euribor.com.es · jul. 2026",
-      "nota": "La fuente no indica si el tipo es con o sin vinculación. Otra fuente da 3,95 % TIN sin bonificar. Verificar."
+      "nota": "La fuente no indica si el tipo es con o sin vinculación. Otra fuente da 3,95 % TIN sin bonificar. Verificar.",
+      "seguro_vinculado": true
     }
   ]
 }

@@ -34,7 +34,7 @@ export function evaluarOferta(o, { capital, anios, euribor, conVinculacion, segu
   const cuota = cuotaMensual(capital, tin, anios);
   const totalPagado = cuota * anios * 12;
   const comisiones = (capital * (o.apertura_pct ?? 0)) / 100 + NOTARIA_ESTIMADA;
-  const seguros = conVinculacion && o.tipo !== "variable" ? seguroAnual * anios : 0;
+  const seguros = conVinculacion && o.tipo !== "variable" && o.seguro_vinculado !== false ? seguroAnual * anios : 0;
   const costeTotal = totalPagado - capital + comisiones + seguros;
   const tae = conVinculacion ? o.tae_bonificada : o.tae_sin_vinculacion;
 
@@ -95,7 +95,7 @@ function renderLista(resultados, ltv, conVinc) {
       const ev = r.eval;
       const ancho = r.apta ? Math.round((ev.costeTotal / maxCoste) * 100) : 0;
       const textoMotivo = r.apta ? "" : motivo(r, ltv);
-      const vinc = o.tipo === "variable" ? "Sin datos de vinculación" : conVinc ? `Con vinculación: ${o.vinculaciones}` : "Sin vinculaciones";
+      const vinc = o.tipo === "variable" ? "Sin datos de vinculación" : o.seguro_vinculado === false ? "Sin vinculaciones obligatorias" : conVinc ? `Con vinculación: ${o.vinculaciones}` : "Sin vinculaciones";
       return `
         <li class="oferta reveal ${r === mejor ? "mejor" : ""} ${r.apta ? "" : "no-apta"}" style="transition-delay:${Math.min(i, 6) * 60}ms">
           <div>
