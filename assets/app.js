@@ -216,6 +216,9 @@ function actualizar() {
 
   const aptas = resultados.filter((r) => r.apta);
   $("#aptas").textContent = `${aptas.length} de ${resultados.length}`;
+  // Lo que sale el piso en total con la mejor oferta: precio + intereses, comisiones y seguros.
+  const mejor = aptas[0];
+  $("#total-piso").textContent = mejor ? eur(f.precio + mejor.eval.costeTotal) : "—";
 
   if (aptas[0]) animarCifra($("#cuota-mejor"), aptas[0].eval.cuota);
   else $("#cuota-mejor").textContent = "–";

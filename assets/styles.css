@@ -115,7 +115,7 @@ select:focus { border-color: var(--accent); }
 .resumen-principal { display: grid; gap: 6px; align-content: center; }
 .resumen-etiqueta { font-size: 14px; opacity: .75; }
 .resumen-cifra { font-size: clamp(34px, 4.6vw, 52px); letter-spacing: -.03em; font-variant-numeric: tabular-nums; font-weight: 650; line-height: 1.05; }
-.resumen-datos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; align-self: center; }
+.resumen-datos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; align-self: center; }
 .resumen-datos div { background: var(--resumen-caja); border-radius: 10px; padding: 12px; min-width: 0; }
 .resumen-datos dt { font-size: 13px; opacity: .75; }
 .resumen-datos dd { margin: 4px 0 0; font-weight: 600; font-variant-numeric: tabular-nums; font-size: 16px; }
@@ -210,7 +210,7 @@ table.cmp tr.mejor .barra-coste i { background: var(--accent); }
 /* ---------- móvil ---------- */
 @media (max-width: 720px) {
   .rejilla-campos { grid-template-columns: minmax(0, 1fr); }
-  .resumen-datos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .resumen-datos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pestanas button { padding: 7px 10px; font-size: 14px; }
   table.cmp td.entidad-celda { min-width: 200px; }
 }
