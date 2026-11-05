@@ -12,51 +12,50 @@
 </head>
 <body>
 
-<a class="saltar" href="#simulador">Ir al simulador</a>
+<a class="saltar" href="#panel-simulador">Ir al simulador</a>
 
-<header class="barra">
-  <a class="marca" href="#inicio">Hipoteca<span>·</span>clara</a>
-  <nav aria-label="Principal">
-    <a href="#ofertas">Ofertas</a>
-    <a href="#metodo">Método</a>
-    <a href="#preguntas">Preguntas</a>
-  </nav>
+<header class="cabecera-web">
+  <div class="contenedor fila-cabecera">
+    <a class="marca" href="#simulador">Hipoteca<span>·</span>clara</a>
+    <nav class="pestanas" role="tablist" aria-label="Secciones">
+      <button type="button" role="tab" id="tab-simulador" aria-controls="panel-simulador" aria-selected="true" data-tab="simulador">Simulador</button>
+      <button type="button" role="tab" id="tab-metodo" aria-controls="panel-metodo" aria-selected="false" tabindex="-1" data-tab="metodo">Cómo calculamos</button>
+      <button type="button" role="tab" id="tab-preguntas" aria-controls="panel-preguntas" aria-selected="false" tabindex="-1" data-tab="preguntas">Preguntas</button>
+      <button type="button" role="tab" id="tab-fuentes" aria-controls="panel-fuentes" aria-selected="false" tabindex="-1" data-tab="fuentes">Fuentes y avisos</button>
+    </nav>
+  </div>
 </header>
 
-<main id="inicio">
+<main class="contenedor">
 
-  <section class="portada">
-    <div class="portada-texto">
-      <h1 class="reveal">Compara hipotecas<br>por coste real</h1>
-      <p class="entradilla reveal">Introduce tu caso y ordenamos las ofertas por lo que vas a pagar en total: intereses, comisiones y seguros que te exige cada entidad.</p>
-      <a class="accion reveal" href="#simulador">Calcular mi caso</a>
+  <!-- ============ SIMULADOR ============ -->
+  <section id="panel-simulador" role="tabpanel" aria-labelledby="tab-simulador" class="panel">
+    <div class="intro">
+      <h1>Compara hipotecas por coste real</h1>
+      <p>Introduce tu caso. Ordenamos las ofertas por lo que pagarás en total: intereses, comisiones y seguros que exige cada entidad.</p>
+      <p class="estado" aria-live="off">
+        <span>Ahora: <strong id="reloj">–</strong></span>
+        <span>Precios comprobados: <strong id="ultima-pasada">–</strong></span>
+        <span>Euríbor: <strong id="euribor-fecha">–</strong></span>
+      </p>
     </div>
-    <aside class="lectura reveal" aria-label="Cómo leer los resultados">
-      <p><strong>Coste total, no solo TAE</strong>Sumamos intereses, comisiones y seguros que exige la vinculación.</p>
-      <p><strong>Vinculaciones a la vista</strong>Cada oferta indica si te obliga a contratar seguros o productos.</p>
-      <p><strong>Variables con índice de referencia</strong>El Euríbor a 12 meses es el índice de referencia de las hipotecas variables.</p>
-    </aside>
-  </section>
 
-  <section class="simulador" id="simulador" aria-labelledby="titulo-sim">
-    <h2 id="titulo-sim" class="sr-only">Simulador de hipoteca</h2>
-
-    <div class="panel-datos reveal">
-      <form id="form" novalidate>
+    <div class="tarjeta formulario">
+      <form id="form" novalidate class="rejilla-campos">
         <label class="campo">
-          <span>Precio de la vivienda</span>
-          <div class="entrada"><input id="precio" type="number" min="30000" step="1000" value="220000" inputmode="numeric"><b>€</b></div>
+          <span class="etiqueta">Precio de la vivienda</span>
+          <span class="entrada"><input id="precio" type="number" min="30000" step="1000" value="220000" inputmode="numeric"><b>€</b></span>
         </label>
         <label class="campo">
-          <span>Ahorro para la entrada</span>
-          <div class="entrada"><input id="ahorro" type="number" min="0" step="1000" value="44000" inputmode="numeric"><b>€</b></div>
+          <span class="etiqueta">Ahorro para la entrada</span>
+          <span class="entrada"><input id="ahorro" type="number" min="0" step="1000" value="44000" inputmode="numeric"><b>€</b></span>
         </label>
-        <label class="campo">
-          <span>Plazo <output id="plazo-valor" for="plazo">30 años</output></span>
+        <div class="campo">
+          <label class="etiqueta" for="plazo">Plazo <output id="plazo-valor" for="plazo">30 años</output></label>
           <input id="plazo" type="range" min="5" max="40" value="30" class="rango">
-        </label>
+        </div>
         <label class="campo">
-          <span>Tipo de interés</span>
+          <span class="etiqueta">Tipo de hipoteca</span>
           <select id="tipo">
             <option value="todas">Todas</option>
             <option value="fija">Fija</option>
@@ -65,57 +64,103 @@
           </select>
         </label>
         <label class="campo">
-          <span>¿Aceptas las vinculaciones?</span>
+          <span class="etiqueta">¿Aceptas las vinculaciones?</span>
           <select id="vinc">
             <option value="si">Sí, con seguros y productos vinculados</option>
             <option value="no">No, sin vinculaciones</option>
           </select>
         </label>
       </form>
-
-      <div class="resumen" aria-live="polite">
-        <p class="resumen-cifra" id="cuota-mejor">–</p>
-        <p class="resumen-etiqueta">de cuota mensual en la mejor oferta</p>
-        <dl class="resumen-datos">
-          <div><dt>Préstamo</dt><dd id="prestamo">—</dd></div>
-          <div><dt>LTV</dt><dd id="ltv">—</dd></div>
-          <div><dt>Aptas</dt><dd id="aptas">—</dd></div>
-        </dl>
-      </div>
     </div>
 
-    <div class="panel-ofertas reveal" id="ofertas">
-      <div class="cabecera">
-        <h2>Ofertas por coste total</h2>
+    <div class="resumen" aria-live="polite">
+      <div class="resumen-principal">
+        <span class="resumen-etiqueta">Cuota mensual de la mejor oferta</span>
+        <strong class="resumen-cifra" id="cuota-mejor">–</strong>
+      </div>
+      <dl class="resumen-datos">
+        <div><dt>Préstamo</dt><dd id="prestamo">—</dd></div>
+        <div><dt>LTV</dt><dd id="ltv">—</dd></div>
+        <div><dt>Ofertas aptas</dt><dd id="aptas">—</dd></div>
+      </dl>
+    </div>
+
+    <div class="tarjeta">
+      <div class="cabecera-lista">
+        <h2>Ofertas ordenadas por coste total</h2>
         <p id="nota-datos" class="nota"></p>
       </div>
-      <ol class="lista" id="lista"></ol>
+      <div class="tablewrap">
+        <table class="cmp">
+          <caption class="sr-only">Ofertas ordenadas por coste total, de menor a mayor</caption>
+          <thead>
+            <tr>
+              <th scope="col">Entidad</th>
+              <th scope="col" class="num">Cuota</th>
+              <th scope="col" class="num">TIN</th>
+              <th scope="col" class="num">TAE</th>
+              <th scope="col" class="num">Coste total</th>
+            </tr>
+          </thead>
+          <tbody id="lista"></tbody>
+        </table>
+      </div>
     </div>
   </section>
 
-  <section class="metodo" id="metodo" aria-labelledby="titulo-metodo">
-    <h2 id="titulo-metodo" class="reveal">Cómo calculamos el coste</h2>
-    <div class="columnas">
-      <p class="reveal"><strong>La cuota</strong> sale de la fórmula francesa de amortización con el tipo de cada oferta y el plazo que elijas. Es la misma que usan los bancos.</p>
-      <p class="reveal"><strong>El coste total</strong> suma los intereses y las comisiones: apertura, tasación, notaría estimada y el seguro que exige la vinculación durante todo el plazo.</p>
-      <p class="reveal"><strong>El variable</strong> usa el Euríbor a 12 meses, que publica el EMMI, más el diferencial de cada entidad. El dato se revisa cada día; si no hay dato, la página lo indica.</p>
+  <!-- ============ MÉTODO ============ -->
+  <section id="panel-metodo" role="tabpanel" aria-labelledby="tab-metodo" class="panel" hidden>
+    <div class="intro">
+      <h1>Cómo calculamos el coste</h1>
+      <p>Las mismas reglas para todas las entidades, para que compares en igualdad de condiciones.</p>
+    </div>
+    <div class="rejilla-tarjetas">
+      <article class="tarjeta">
+        <h2>La cuota</h2>
+        <p>Sale de la fórmula francesa de amortización con el tipo de cada oferta y el plazo que elijas. Es la misma que usan los bancos.</p>
+      </article>
+      <article class="tarjeta">
+        <h2>El coste total</h2>
+        <p>Suma los intereses y las comisiones (apertura, tasación y notaría estimada) y el seguro que exige la vinculación durante todo el plazo.</p>
+      </article>
+      <article class="tarjeta">
+        <h2>El variable</h2>
+        <p>Usa el Euríbor a 12 meses más el diferencial de cada entidad. El dato se revisa cada día; si no hay dato, la página lo indica.</p>
+      </article>
     </div>
   </section>
 
-  <section class="preguntas" id="preguntas" aria-labelledby="titulo-faq">
-    <h2 id="titulo-faq" class="reveal">Preguntas</h2>
+  <!-- ============ PREGUNTAS ============ -->
+  <section id="panel-preguntas" role="tabpanel" aria-labelledby="tab-preguntas" class="panel" hidden>
+    <div class="intro">
+      <h1>Preguntas frecuentes</h1>
+    </div>
     <div class="lista-faq">
-      <details class="reveal"><summary>¿Qué es el LTV?</summary><p>El préstamo dividido entre el valor de la vivienda. Muchas entidades no financian más del 80 %.</p></details>
-      <details class="reveal"><summary>¿Por qué no ordenamos solo por TAE?</summary><p>La TAE no siempre recoge los seguros que te exige la vinculación. Por eso comparamos el coste total en euros.</p></details>
-      <details class="reveal"><summary>¿Sois intermediarios de crédito?</summary><p>No. Esta web es informativa y no concede préstamos. Para una oferta vinculante acude a la entidad o a un intermediario inscrito en el Banco de España.</p></details>
+      <details class="tarjeta"><summary>¿Qué es el LTV?</summary><p>El préstamo dividido entre el valor de la vivienda. Muchas entidades no financian más del 80 %.</p></details>
+      <details class="tarjeta"><summary>¿Por qué no ordenamos solo por TAE?</summary><p>La TAE no siempre recoge los seguros que te exige la vinculación. Por eso comparamos el coste total en euros.</p></details>
+      <details class="tarjeta"><summary>¿Sois intermediarios de crédito?</summary><p>No. Esta web es informativa y no concede préstamos. Para una oferta vinculante acude a la entidad o a un intermediario inscrito en el Banco de España.</p></details>
+    </div>
+  </section>
+
+  <!-- ============ FUENTES ============ -->
+  <section id="panel-fuentes" role="tabpanel" aria-labelledby="tab-fuentes" class="panel" hidden>
+    <div class="intro">
+      <h1>Fuentes y avisos</h1>
+    </div>
+    <div class="tarjeta texto-largo">
+      <p>Cifras verificadas en la web oficial de cada entidad el 5 de noviembre de 2026 cuando ha sido posible. Las marcadas como comparador no se pudieron verificar en la web de la entidad.</p>
+      <p>Pueden cambiar en cualquier momento. No es una oferta vinculante ni asesoramiento financiero.</p>
+      <p>El seguro de cada oferta sale de su web cuando la publica; si no, se usa 300 € al año como estimación. La notaría (900 €) es una estimación.</p>
     </div>
   </section>
 
 </main>
 
 <footer class="pie">
-  <p class="pie-nombre">Hipoteca·clara</p>
-  <p>Información orientativa. Cifras verificadas en la web oficial de cada entidad el 5 de noviembre de 2026 cuando ha sido posible; las marcadas como comparador no se pudieron verificar en la web de la entidad. Pueden cambiar en cualquier momento. No es una oferta vinculante ni asesoramiento financiero. El seguro de cada oferta sale de su web cuando la publica; si no, se usa 300 € al año como estimación. La notaría (900 €) es una estimación.</p>
+  <div class="contenedor">
+    <p class="pie-nombre">Hipoteca·clara</p>
+    <p>Información orientativa. No es una oferta vinculante ni asesoramiento financiero.</p>
+  </div>
 </footer>
 
 <script src="assets/app.js" type="module"></script>

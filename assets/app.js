@@ -54,6 +54,11 @@ function leerFormulario() {
 }
 
 async function cargarJSON(ruta) {
+  // En la versión de un solo archivo los datos vienen incrustados.
+  if (typeof __DATOS__ !== "undefined") {
+    if (ruta.includes("offers")) return __DATOS__.offers;
+    if (ruta.includes("reference")) return __DATOS__.reference;
+  }
   try {
     const r = await fetch(ruta, { cache: "no-cache" });
     return r.ok ? await r.json() : null;
@@ -71,6 +76,41 @@ function iniciales(nombre) {
   return nombre.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("");
 }
 
+// Dominio oficial de cada entidad. El icono se pide al abrir la página; si no carga, aparece la inicial.
+const DOMINIOS = {
+  "Ibercaja": "ibercaja.es",
+  "Banca March": "bancamarch.es",
+  "Banco Sabadell": "bancsabadell.com",
+  "Openbank": "openbank.es",
+  "BBVA": "bbva.es",
+  "Banco Santander": "bancosantander.es",
+  "Unicaja Banco": "unicajabanco.es",
+  "Cajamar Caja Rural": "cajamar.es",
+  "MyInvestor": "myinvestor.es",
+  "Bankinter": "bankinter.com",
+  "Kutxabank": "kutxabank.es",
+  "Caja de Ingenieros": "cajaingenieros.com",
+  "imagin": "imaginbank.es",
+  "Abanca": "abanca.com",
+};
+
+function monograma(o) {
+  return `<span class="monograma" aria-hidden="true">${escapar(iniciales(o.entidad))}</span>`;
+}
+
+// Orden de búsqueda del logo: archivo local (assets/logos/<dominio>.png o .svg), icono de Google y, si nada carga, la inicial.
+function logoEntidad(o) {
+  if (o.logo) return `<img class="logo" src="${escapar(o.logo)}" alt="" width="34" height="34" decoding="async">`;
+  const dominio = DOMINIOS[o.entidad];
+  if (!dominio) return monograma(o);
+  const rutas = [
+    `assets/logos/${dominio}.png`,
+    `assets/logos/${dominio}.svg`,
+    `https://www.google.com/s2/favicons?domain=${encodeURIComponent(dominio)}&sz=64`,
+  ];
+  return `<img class="logo" src="${rutas[0]}" alt="" width="34" height="34" decoding="async" data-resto="${escapar(JSON.stringify(rutas.slice(1)))}" data-iniciales="${escapar(iniciales(o.entidad))}">`;
+}
+
 function motivo(r, ltv) {
   if (!r.eval.disponible) {
     if (r.oferta.tipo === "variable" && estado.euribor == null) return "Falta el dato de Euríbor";
@@ -84,7 +124,7 @@ function motivo(r, ltv) {
 function renderLista(resultados, ltv, conVinc) {
   const lista = $("#lista");
   if (!resultados.length) {
-    lista.innerHTML = '<p class="vacio">No hay ofertas de ese tipo todavía.</p>';
+    lista.innerHTML = '<tr><td colspan="5" class="vacio">No hay ofertas de ese tipo todavía.</td></tr>';
     return;
   }
   const aptas = resultados.filter((r) => r.apta);
@@ -92,41 +132,44 @@ function renderLista(resultados, ltv, conVinc) {
   const mejor = aptas[0];
 
   lista.innerHTML = resultados
-    .map((r, i) => {
+    .map((r) => {
       const o = r.oferta;
       const ev = r.eval;
       const ancho = r.apta ? Math.round((ev.costeTotal / maxCoste) * 100) : 0;
       const textoMotivo = r.apta ? "" : motivo(r, ltv);
       const vinc = o.tipo === "variable" ? "Sin datos de vinculación" : o.seguro_vinculado === false ? "Sin vinculaciones obligatorias" : conVinc ? `Con vinculación: ${o.vinculaciones}` : "Sin vinculaciones";
+      const logo = logoEntidad(o);
+      const etiqueta = r === mejor ? `<span class="etiqueta-mejor">Mejor opción</span>` : "";
       return `
-        <li class="oferta reveal ${r === mejor ? "mejor" : ""} ${r.apta ? "" : "no-apta"}" style="transition-delay:${Math.min(i, 6) * 60}ms">
-          <div>
-            <div class="entidad">
-              ${o.logo
-                ? `<img class="logo" src="${escapar(o.logo)}" alt="" width="36" height="36" decoding="async">`
-                : `<span class="monograma" aria-hidden="true">${escapar(iniciales(o.entidad))}</span>`}
+        <tr class="${r === mejor ? "mejor" : ""} ${r.apta ? "" : "no-apta"}">
+          <td class="entidad-celda">
+            <div class="celda-entidad">
+              ${logo}
               <div>
-                <h3>${escapar(o.entidad)}</h3>
-                <p class="meta">${escapar(o.producto)}<span class="sep">·</span>${ETIQUETA_TIPO[o.tipo]}</p>
+                <h3>${escapar(o.entidad)} ${etiqueta}</h3>
+                <p class="meta">${escapar(o.producto)}<span class="sep">·</span>${ETIQUETA_TIPO[o.tipo]}${textoMotivo ? `<span class="sep">·</span>${escapar(textoMotivo)}` : ""}</p>
               </div>
             </div>
-            <p class="meta">${escapar(vinc)}${textoMotivo ? `<span class="sep">·</span>${escapar(textoMotivo)}` : ""}</p>
-          </div>
-          <div class="dato"><small>Cuota mensual</small><strong>${r.apta ? eur(ev.cuota) : "–"}</strong></div>
-          <div class="dato"><small>TIN · TAE</small><strong>${ev.disponible ? pct(ev.tin) : "–"}</strong>
-            <span class="tae">${ev.disponible && ev.tae != null ? "TAE " + pct(ev.tae) : "TAE sin dato"}</span></div>
-          <div class="dato"><small>Coste total</small><strong>${r.apta ? eur(ev.costeTotal) : "–"}</strong>
+            <details class="condiciones">
+              <summary>Condiciones</summary>
+              <p>${escapar(vinc)}</p>
+              <a class="fuente" href="${escapar(o.fuente)}" target="_blank" rel="noopener">${escapar(o.fuente_nombre || "Fuente")}</a>
+            </details>
+          </td>
+          <td class="num">${r.apta ? eur(ev.cuota) : "–"}</td>
+          <td class="num">${ev.disponible ? pct(ev.tin) : "–"}</td>
+          <td class="num">${ev.disponible && ev.tae != null ? pct(ev.tae) : "sin dato"}</td>
+          <td class="num">
+            <strong>${r.apta ? eur(ev.costeTotal) : "–"}</strong>
             <div class="barra-coste" aria-hidden="true"><i data-ancho="${ancho}"></i></div>
-            <a class="fuente" href="${escapar(o.fuente)}" target="_blank" rel="noopener">${escapar(o.fuente_nombre || "Fuente")}</a>
-          </div>
-        </li>`;
+          </td>
+        </tr>`;
     })
     .join("");
 
   requestAnimationFrame(() =>
     lista.querySelectorAll("i[data-ancho]").forEach((b) => (b.style.width = b.dataset.ancho + "%"))
   );
-  observarReveal(lista);
 }
 
 // Cifra que se desliza hasta su valor
@@ -138,13 +181,11 @@ function animarCifra(el, destino) {
     return;
   }
   const t0 = performance.now();
-  el.classList.add("pulso");
   const paso = (t) => {
     const p = Math.min(1, (t - t0) / 450);
     const e = 1 - Math.pow(1 - p, 3);
     el.textContent = eur(inicio + (destino - inicio) * e);
     if (p < 1) requestAnimationFrame(paso);
-    else el.classList.remove("pulso");
   };
   requestAnimationFrame(paso);
 }
@@ -196,18 +237,42 @@ function pintarReferencia() {
   $("#nota-datos").textContent = partes.join(" · ");
 }
 
-function observarReveal(raiz = document) {
-  const io = new IntersectionObserver(
-    (entradas) =>
-      entradas.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-          io.unobserve(e.target);
-        }
-      }),
-    { threshold: 0.12 }
-  );
-  raiz.querySelectorAll(".reveal:not(.visible)").forEach((el) => io.observe(el));
+// Fecha y hora actual, y fechas de la última comprobación de precios y del Euríbor.
+function pintarEstado() {
+  const fechaLarga = (d) => new Date(d).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
+  const pintarReloj = () => {
+    $("#reloj").textContent = new Date().toLocaleString("es-ES", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+  };
+  pintarReloj();
+  setInterval(pintarReloj, 30000);
+
+  $("#ultima-pasada").textContent = estado.datos?.actualizado ? fechaLarga(estado.datos.actualizado) : "sin fecha";
+  const refFecha = estado.referencia.euribor12mPeriodo;
+  $("#euribor-fecha").textContent = refFecha ? fechaLarga(refFecha) : "sin dato";
+}
+
+// Pestañas: muestra una sección y oculta las demás.
+function iniciarPestanas() {
+  const botones = [...document.querySelectorAll('[role="tab"]')];
+  const mostrar = (nombre) => {
+    botones.forEach((b) => {
+      const activa = b.dataset.tab === nombre;
+      b.setAttribute("aria-selected", String(activa));
+      b.tabIndex = activa ? 0 : -1;
+    });
+    document.querySelectorAll('[role="tabpanel"]').forEach((p) => {
+      p.hidden = p.id !== `panel-${nombre}`;
+    });
+  };
+  botones.forEach((b) => b.addEventListener("click", () => mostrar(b.dataset.tab)));
+  // Flechas izquierda y derecha entre pestañas.
+  document.querySelector('[role="tablist"]').addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    const i = botones.findIndex((b) => b.getAttribute("aria-selected") === "true");
+    const siguiente = botones[(i + (e.key === "ArrowRight" ? 1 : -1) + botones.length) % botones.length];
+    siguiente.focus();
+    mostrar(siguiente.dataset.tab);
+  });
 }
 
 async function iniciar() {
@@ -216,12 +281,25 @@ async function iniciar() {
   estado.referencia = referencia ?? {};
   estado.euribor = estado.referencia.euribor12m ?? null;
   pintarReferencia();
+  pintarEstado();
 
   $("#form").addEventListener("input", actualizar);
   $("#tipo").addEventListener("change", actualizar);
   $("#vinc").addEventListener("change", actualizar);
+  iniciarPestanas();
+  // Si un icono no carga, se cambia por la inicial de la entidad.
+  $("#lista").addEventListener("error", (e) => {
+    const img = e.target;
+    if (img.tagName !== "IMG" || !img.dataset.iniciales) return;
+    const resto = JSON.parse(img.dataset.resto || "[]");
+    if (resto.length) {
+      img.dataset.resto = JSON.stringify(resto.slice(1));
+      img.src = resto[0];
+      return;
+    }
+    img.outerHTML = `<span class="monograma" aria-hidden="true">${escapar(img.dataset.iniciales)}</span>`;
+  }, true);
   actualizar();
-  observarReveal();
 }
 
 iniciar();
