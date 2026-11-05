@@ -27,7 +27,7 @@
 
   <section class="portada">
     <div class="portada-texto">
-      <h1 class="reveal">Compara hipotecas por coste real</h1>
+      <h1 class="reveal">Compara hipotecas<br>por coste real</h1>
       <p class="entradilla reveal">Introduce tu caso y ordenamos las ofertas por lo que vas a pagar en total: intereses, comisiones y seguros que te exige cada entidad.</p>
       <a class="accion reveal" href="#simulador">Calcular mi caso</a>
     </div>
@@ -64,11 +64,18 @@
             <option value="mixta">Mixta</option>
           </select>
         </label>
+        <label class="campo">
+          <span>¿Aceptas las vinculaciones?</span>
+          <select id="vinc">
+            <option value="si">Sí, con seguros y productos vinculados</option>
+            <option value="no">No, sin vinculaciones</option>
+          </select>
+        </label>
       </form>
 
       <div class="resumen" aria-live="polite">
-        <p class="resumen-etiqueta">Cuota mensual, mejor oferta</p>
-        <p class="resumen-cifra" id="cuota-mejor">—</p>
+        <p class="resumen-cifra" id="cuota-mejor">–</p>
+        <p class="resumen-etiqueta">de cuota mensual en la mejor oferta</p>
         <dl class="resumen-datos">
           <div><dt>Préstamo</dt><dd id="prestamo">—</dd></div>
           <div><dt>LTV</dt><dd id="ltv">—</dd></div>
@@ -97,16 +104,18 @@
 
   <section class="preguntas" id="preguntas" aria-labelledby="titulo-faq">
     <h2 id="titulo-faq" class="reveal">Preguntas</h2>
-    <details class="reveal"><summary>¿Qué es el LTV?</summary><p>El préstamo dividido entre el valor de la vivienda. Muchas entidades no financian más del 80 %.</p></details>
-    <details class="reveal"><summary>¿Por qué no ordenamos solo por TAE?</summary><p>La TAE no siempre recoge los seguros que te exige la vinculación. Por eso comparamos el coste total en euros.</p></details>
-    <details class="reveal"><summary>¿Sois intermediarios de crédito?</summary><p>No. Esta web es informativa y no concede préstamos. Para una oferta vinculante acude a la entidad o a un intermediario inscrito en el Banco de España.</p></details>
+    <div class="lista-faq">
+      <details class="reveal"><summary>¿Qué es el LTV?</summary><p>El préstamo dividido entre el valor de la vivienda. Muchas entidades no financian más del 80 %.</p></details>
+      <details class="reveal"><summary>¿Por qué no ordenamos solo por TAE?</summary><p>La TAE no siempre recoge los seguros que te exige la vinculación. Por eso comparamos el coste total en euros.</p></details>
+      <details class="reveal"><summary>¿Sois intermediarios de crédito?</summary><p>No. Esta web es informativa y no concede préstamos. Para una oferta vinculante acude a la entidad o a un intermediario inscrito en el Banco de España.</p></details>
+    </div>
   </section>
 
 </main>
 
 <footer class="pie">
   <p class="pie-nombre">Hipoteca·clara</p>
-  <p>Información orientativa. Indicadores: Banco Central Europeo. No es una oferta vinculante ni asesoramiento financiero. Las ofertas mostradas son de ejemplo hasta que se verifiquen.</p>
+  <p>Información orientativa. Ofertas tomadas de comparativas publicadas en noviembre de 2026; cada entidad puede cambiar sus condiciones. No es una oferta vinculante ni asesoramiento financiero. Los seguros de vinculación (300 € al año) y la notaría (900 €) son estimaciones.</p>
 </footer>
 
 <script src="assets/app.js" type="module"></script>
