@@ -1,7 +1,7 @@
 {
   "actualizado": "2026-11-05T00:00:00Z",
-  "euribor12m": 3.239,
-  "euribor12mPeriodo": "2026-10-31",
+  "euribor12m": 3.302,
+  "euribor12mPeriodo": "2026-11-04",
   "tipoMedioVivienda": null,
-  "fuente": "Euríbor 12 meses: media mensual de octubre de 2026 (3,239 %), según hipotecas.me y futurfinances (datos del Banco de España). No es el valor diario del 4 de noviembre, que no he podido confirmar."
+  "fuente": "Euríbor 12 meses: cierre diario del 4 de noviembre de 2026 (3,302 %), según la página de Expansión que ha facilitado el usuario. La misma página confirma la media de octubre (3,239 %) y de septiembre (3,247 %)."
 }
