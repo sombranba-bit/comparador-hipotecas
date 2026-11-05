@@ -45,7 +45,7 @@
       "producto": "Hipoteca Fija",
       "tipo": "fija",
       "tin_bonificado": 2.75,
-      "tae_bonificada": 3.67,
+      "tae_bonificada": 3.58,
       "tin_sin_vinculacion": 3.75,
       "tae_sin_vinculacion": 4.23,
       "plazo_max": 30,
@@ -54,7 +54,7 @@
       "vinculaciones": "4 productos (nómina, seguros de vida, hogar y protección de pagos)",
       "fuente": "https://www.rankia.com/blog/mejores-hipotecas/3091129-mejores-hipotecas-fijas",
       "fuente_nombre": "Rankia · nov. 2026",
-      "nota": "Fuentes de julio y agosto de 2026 dan 3,58 % TAE; la de octubre da 3,67 %. Verificar con la entidad."
+      "nota": "3,58 % TAE según Kelisto (septiembre), Selectra, Rankia e iAhorro. HelpMyCash (octubre) da 3,67 %. Verificar con la entidad."
     },
     {
       "id": "openbank-fija",
@@ -151,16 +151,17 @@
       "logo": null,
       "producto": "HipotecON fija",
       "tipo": "fija",
-      "tin_bonificado": 3.05,
-      "tae_bonificada": 3.68,
-      "tin_sin_vinculacion": null,
-      "tae_sin_vinculacion": null,
+      "tin_bonificado": 2.85,
+      "tae_bonificada": 3.72,
+      "tin_sin_vinculacion": 3.65,
+      "tae_sin_vinculacion": 3.91,
       "plazo_max": 30,
       "ltv_max": 80,
       "apertura_pct": null,
       "vinculaciones": "no especificadas en la fuente",
       "fuente": "https://www.elnacional.cat/oneconomia/es/economia/vas-firmar-hipoteca-fija-en-noviembre-estas-son-10-mas-baratas-255-tin-klt5_1719945_102.html",
-      "fuente_nombre": "ON Economia · nov. 2026"
+      "fuente_nombre": "ON Economia · nov. 2026",
+      "nota": "Relanzamiento de agosto de 2026 según Roams y HelpMyCash. Exige muchos productos vinculados para el tipo bonificado."
     },
     {
       "id": "myinvestor-sin-mochila",
@@ -186,16 +187,16 @@
       "producto": "Hipoteca Fija Bonificada",
       "tipo": "fija",
       "tin_bonificado": 3.2,
-      "tae_bonificada": 3.79,
-      "tin_sin_vinculacion": null,
-      "tae_sin_vinculacion": null,
+      "tae_bonificada": 3.8,
+      "tin_sin_vinculacion": 4.5,
+      "tae_sin_vinculacion": 4.86,
       "plazo_max": 30,
       "ltv_max": 80,
       "apertura_pct": 0,
       "vinculaciones": "seguro de hogar y de vida (la tabla de Rastreator añade domiciliación de nómina)",
       "fuente": "https://www.rastreator.com/hipotecas/guias/mejores-hipotecas-tipo-fijo",
       "fuente_nombre": "Rastreator · nov. 2026",
-      "nota": "Fuentes de junio a agosto de 2026 citan 3,20 % TIN para 20 años; otras dan 2,85 %. Verificar con la entidad."
+      "nota": "3,20 % TIN a 20 años según Rankia, Kelisto y HelpMyCash. Rastreator (agosto) da 2,85 % TIN y 3,42 % TAE a 25 años. Verificar con la entidad."
     },
     {
       "id": "kutxabank-variable",
