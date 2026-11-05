@@ -87,7 +87,7 @@ main { padding-block: 32px 64px; }
   display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px 18px; align-items: end;
 }
 .campo { display: grid; gap: 8px; min-width: 0; width: 100%; }
-.etiqueta { font-size: 14px; color: var(--muted); display: flex; justify-content: space-between; align-items: baseline; }
+.etiqueta { font-size: 14px; color: var(--muted); display: flex; justify-content: space-between; align-items: baseline; gap: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 20px; }
 .etiqueta output { color: var(--tinta); font-weight: 600; font-variant-numeric: tabular-nums; }
 .entrada {
   display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 14px;
