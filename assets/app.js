@@ -34,7 +34,9 @@ export function evaluarOferta(o, { capital, anios, euribor, conVinculacion, segu
   const cuota = cuotaMensual(capital, tin, anios);
   const totalPagado = cuota * anios * 12;
   const comisiones = (capital * (o.apertura_pct ?? 0)) / 100 + NOTARIA_ESTIMADA;
-  const seguros = conVinculacion && o.tipo !== "variable" && o.seguro_vinculado !== false ? seguroAnual * anios : 0;
+  // Seguro propio de la oferta si la entidad lo publica; si no, el importe por defecto del fichero.
+  const seguroOferta = o.seguro_anual ?? seguroAnual;
+  const seguros = conVinculacion && o.tipo !== "variable" && o.seguro_vinculado !== false ? seguroOferta * anios : 0;
   const costeTotal = totalPagado - capital + comisiones + seguros;
   const tae = conVinculacion ? o.tae_bonificada : o.tae_sin_vinculacion;
 
