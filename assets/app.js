@@ -38,7 +38,7 @@ export function evaluarOferta(o, { capital, anios, euribor, conVinculacion, segu
   const costeTotal = totalPagado - capital + comisiones + seguros;
   const tae = conVinculacion ? o.tae_bonificada : o.tae_sin_vinculacion;
 
-  return { disponible: true, tin, tae, cuota, costeTotal, aptaPlazo: anios <= o.plazo_max };
+  return { disponible: true, tin, tae, cuota, costeTotal, aptaPlazo: o.plazo_max == null || anios <= o.plazo_max };
 }
 
 function leerFormulario() {
