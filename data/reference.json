@@ -1,7 +1,7 @@
 {
   "actualizado": "2026-11-05T00:00:00Z",
-  "euribor12m": 3.302,
-  "euribor12mPeriodo": "2026-11-04",
+  "euribor12m": null,
+  "euribor12mPeriodo": null,
   "tipoMedioVivienda": null,
-  "fuente": "Euríbor 12 meses: valor oficial del 4 de noviembre de 2026 publicado por Rastreator y Rankia (EMMI). El script update-data.mjs lo sustituye por la serie oficial del BCE al ejecutarse en GitHub Actions."
+  "fuente": "Euríbor 12 meses sin dato: no se ha podido confirmar el valor oficial del BCE desde este entorno. El script update-data.mjs lo rellena en GitHub Actions."
 }
