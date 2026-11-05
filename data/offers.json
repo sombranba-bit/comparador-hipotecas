@@ -301,6 +301,26 @@
       "fuente": "Web oficial de Abanca (URL exacta pendiente de registrar; cifras verificadas en sesión anterior)",
       "fuente_nombre": "Abanca (web oficial) · 5-nov-2026",
       "nota": "Oficial a 15 años: 3,35 % TIN / 5,83 % TAE con bonificación; 4,35 % TIN / 5,02 % TAE sin ella. Los 2,85 % de comparadores no coinciden con la web. Plazo de referencia: 15 años."
+    },
+    {
+      "id": "promotora-bbva-pendiente",
+      "entidad": "Promotora (BBVA)",
+      "logo": null,
+      "producto": "Oferta de la promotora, pendiente",
+      "tipo": "fija",
+      "tin_bonificado": null,
+      "tae_bonificada": null,
+      "tin_sin_vinculacion": null,
+      "tae_sin_vinculacion": null,
+      "plazo_max": null,
+      "ltv_max": 80,
+      "apertura_pct": null,
+      "seguro_anual": null,
+      "vinculaciones": "Pendiente de recibir por escrito",
+      "fuente": "",
+      "fuente_nombre": "Pendiente de la promotora",
+      "nota": "Marcador sin datos. Rellenar con la oferta por escrito antes de la firma.",
+      "seguro_vinculado": true
     }
   ]
 }
