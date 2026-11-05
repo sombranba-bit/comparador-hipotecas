@@ -148,7 +148,8 @@ select:focus { background: var(--hundido); outline: 2px solid var(--accent); out
 }
 .oferta > * { min-width: 0; }
 .oferta:hover { background: var(--hundido); transform: translateX(3px); }
-.oferta.mejor { background: var(--accent-suave); }
+.oferta.mejor { background: var(--superficie); }
+.oferta.mejor h3::after { content: "  · mejor opción"; color: var(--accent-texto); font-weight: 500; font-size: var(--t-sm); }
 .oferta.no-apta { opacity: .55; }
 .oferta h3 { margin: 0 0 4px; font-size: var(--t-body); }
 .meta { margin: 0; font-size: var(--t-sm); color: var(--muted); }
