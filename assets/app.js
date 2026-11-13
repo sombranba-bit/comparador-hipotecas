@@ -225,6 +225,7 @@ function actualizar() {
   else $("#cuota-mejor").textContent = "–";
 
   renderLista(resultados, ltv, f.conVinculacion);
+  guardarUrl();
 }
 
 function pintarReferencia() {
@@ -249,9 +250,62 @@ function pintarEstado() {
   pintarReloj();
   setInterval(pintarReloj, 30000);
 
-  $("#ultima-pasada").textContent = estado.datos?.actualizado ? fechaLarga(estado.datos.actualizado) : "sin fecha";
-  const refFecha = estado.referencia.euribor12mPeriodo;
-  $("#euribor-fecha").textContent = refFecha ? fechaLarga(refFecha) : "sin dato";
+  // Días desde una fecha ISO. Si pasan más de 7, la cifra se marca como antigua.
+  const diasDesde = (f) => Math.floor((Date.now() - new Date(f).getTime()) / 86400000);
+  const pintarFecha = (el, fecha) => {
+    if (!fecha) {
+      el.textContent = "sin fecha";
+      return;
+    }
+    const d = diasDesde(fecha);
+    el.textContent = d > 7 ? `${fechaLarga(fecha)} · hace ${d} días` : fechaLarga(fecha);
+    el.classList.toggle("antiguo", d > 7);
+  };
+  pintarFecha($("#ultima-pasada"), estado.datos?.actualizado);
+  pintarFecha($("#euribor-fecha"), estado.referencia.euribor12mPeriodo);
+}
+
+// Estado del formulario en la URL (?p=precio&g=gastos&a=ahorro&n=años&t=tipo&v=si|no).
+// Solo se escriben los valores que cambian respecto al ejemplo. No se guarda nada más.
+const CAMPOS_URL = { p: "precio", g: "gastos", a: "ahorro", n: "plazo", t: "tipo", v: "vinc" };
+const valoresIniciales = {};
+
+function leerUrl() {
+  const params = new URLSearchParams(location.search);
+  for (const [clave, id] of Object.entries(CAMPOS_URL)) {
+    const v = params.get(clave);
+    if (v == null) continue;
+    const el = $(`#${id}`);
+    if (id === "tipo" || id === "vinc") {
+      const validos = [...el.options].map((o) => o.value);
+      if (validos.includes(v)) el.value = v;
+    } else if (id === "plazo") {
+      const n = Number(v);
+      if (Number.isInteger(n) && n >= 5 && n <= 40) el.value = String(n);
+    } else if (Number.isFinite(Number(v)) && Number(v) >= 0) {
+      el.value = String(Number(v));
+    }
+  }
+}
+
+function guardarUrl() {
+  const params = new URLSearchParams();
+  for (const [clave, id] of Object.entries(CAMPOS_URL)) {
+    const el = $(`#${id}`);
+    if (el.value !== valoresIniciales[id]) params.set(clave, el.value);
+  }
+  const query = params.toString();
+  try {
+    history.replaceState(null, "", query ? `?${query}` : location.pathname);
+  } catch {
+    // Algunos entornos (archivos locales) no permiten cambiar la URL; el simulador sigue funcionando.
+  }
+}
+
+function restablecer() {
+  for (const [, id] of Object.entries(CAMPOS_URL)) $(`#${id}`).value = valoresIniciales[id];
+  actualizar();
+  guardarUrl();
 }
 
 // Pestañas: muestra una sección y oculta las demás.
@@ -293,9 +347,14 @@ async function iniciar() {
   pintarReferencia();
   pintarEstado();
 
+  // Valores del ejemplo (los del HTML), para restablecer y para no ensuciar la URL.
+  for (const id of Object.values(CAMPOS_URL)) valoresIniciales[id] = $(`#${id}`).value;
+  leerUrl();
+
   $("#form").addEventListener("input", actualizar);
   $("#tipo").addEventListener("change", actualizar);
   $("#vinc").addEventListener("change", actualizar);
+  $("#reiniciar").addEventListener("click", restablecer);
   iniciarPestanas();
   // Si un icono no carga, se cambia por la inicial de la entidad.
   $("#lista").addEventListener("error", (e) => {

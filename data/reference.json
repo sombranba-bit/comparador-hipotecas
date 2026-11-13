@@ -1,8 +1,10 @@
 {
-  "actualizado": "2026-11-13T07:21:23.641Z",
-  "euribor12m": 3.2385909,
-  "euribor12mPeriodo": "2026-10",
+  "actualizado": "2026-11-13",
+  "euribor12m": 3.302,
+  "euribor12mPeriodo": "2026-11-04",
+  "euribor12mMediaMensual": 3.2385909,
+  "euribor12mMediaMensualPeriodo": "2026-10",
   "tipoMedioVivienda": 2.99,
-  "fuente": "Euríbor 12 meses: cierre diario del 4 de noviembre de 2026 (3,302 %), según la página de Expansión que ha facilitado el usuario. La misma página confirma la media de octubre (3,239 %) y de septiembre (3,247 %).",
-  "tipoMedioViviendaPeriodo": "2026-09"
+  "tipoMedioViviendaPeriodo": "2026-09",
+  "fuente": "Euríbor 12 meses diario: cierre del 4 de noviembre de 2026 (3,302 %), según la página de Expansión que ha facilitado el usuario; se actualiza a mano. Media mensual de octubre de 2026 (3,239 %), serie FM del BCE, actualizada por el script. Tipo medio de nuevas hipotecas para vivienda de septiembre de 2026, serie MIR del BCE."
 }

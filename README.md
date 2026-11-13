@@ -10,7 +10,8 @@ assets/styles.css           Estilos y animaciones
 assets/app.js               Simulador, comparador y reveal al hacer scroll
 data/offers.json            Ofertas (DATOS DE EJEMPLO por ahora)
 data/reference.json         Euríbor 12M y fecha de referencia
-scripts/update-data.mjs     Intenta descargar el Euríbor 12M del BCE
+scripts/update-data.mjs     Actualiza la media mensual del Euríbor y el tipo medio del BCE
+tests/comprobar.mjs         Comprueba cuota y coste total frente a una simulación cuota a cuota
 .github/workflows/          Ejecución automática diaria
 mockups/                    Tres propuestas visuales
 ```
@@ -21,6 +22,10 @@ Abre `index.html` con un servidor estático (por ejemplo `npx serve .`), porque 
 
 Para actualizar los indicadores a mano: `node scripts/update-data.mjs` (Node 20+).
 
+Para comprobar el cálculo: `node tests/comprobar.mjs` (1.280 casos; debe salir `discrepancias 0`).
+
+El formulario se guarda en la dirección de la página (`?p=precio&g=gastos&a=ahorro&n=años&t=tipo&v=si|no`). Solo aparecen los valores que cambian respecto al ejemplo. El botón «Volver al ejemplo» restablece los valores. No se guarda nada en el navegador ni en ningún servidor.
+
 ## Actualización automática
 
 El workflow `actualizar-datos.yml` se ejecuta cada día a las 06:17 UTC, actualiza `data/reference.json` y hace commit solo si hay cambios.
@@ -28,9 +33,16 @@ El workflow `actualizar-datos.yml` se ejecuta cada día a las 06:17 UTC, actuali
 ## Datos
 
 - **Ofertas** (`data/offers.json`): 15 productos de fijas y una variable, tomados de comparadores (Rankia, Rastreator, Kelisto, Selectra, HelpMyCash, sincomisiones, Roams, hipotecas.me, euribor.com.es) entre julio y noviembre de 2026. Cada oferta lleva su fuente y su fecha. **No están verificados con cada entidad.** Donde las fuentes discrepan, la oferta tiene una `nota`.
-- **Euríbor** (`data/reference.json`): cierre diario del 4 de noviembre de 2026, 3,302 %, según la página de Expansión. El script `update-data.mjs` intenta sustituirlo por la serie del BCE en GitHub Actions, pero desde esta sesión el BCE no responde.
+- **Euríbor** (`data/reference.json`): cierre diario del 4 de noviembre de 2026, 3,302 %, según la página de Expansión. Este dato **se actualiza a mano**. El BCE no publica el cierre diario en la serie que usa el script. `update-data.mjs` solo guarda en campos aparte la media mensual del Euríbor (`euribor12mMediaMensual`) y el tipo medio de vivienda, para no sustituir el dato diario por una media. Si la fecha tiene más de 7 días, la web la marca como antigua.
+- **Precios**: `data/offers.json` no se actualiza solo. Si tiene más de 7 días, la web lo marca como antiguo.
 - **Supuestos**: seguro de vinculación por oferta (`seguro_anual`, según la web de cada entidad; si es `null`, 300 €/año de `seguro_anual_estimado`), solo en ofertas con `seguro_vinculado` distinto de `false`; y notaría 900 €. Son estimaciones y se indican en la web.
 - **Ofertas sin TAE sin vinculación**: se muestran como "TAE sin dato" y no se calcula.
+
+## Privacidad
+
+- Los logotipos sin archivo local se piden a `google.com/s2/favicons` con el dominio de la entidad. Google puede saber que alguien ha abierto la página. Si no se quiere, basta con borrar esa ruta en `logoEntidad()` (`assets/app.js`); se verán las iniciales.
+- No hay Content-Security-Policy: GitHub Pages no permite cabeceras, y una etiqueta `meta` con CSP bloquearía el script y los estilos incrustados de la versión de un solo archivo.
+- Las fuentes se cargan de Google Fonts.
 
 ## Pendiente antes de publicar
 
