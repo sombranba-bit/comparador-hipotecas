@@ -134,7 +134,7 @@ function renderLista(resultados, ltv, conVinc) {
   }
   const aptas = resultados.filter((r) => r.apta);
   const maxCoste = Math.max(...aptas.map((r) => r.eval.costeTotal), 1);
-  const mejor = aptas[0];
+  const mejor = aptas.find((r) => r.oferta.verificada);
 
   lista.innerHTML = resultados
     .map((r) => {
@@ -152,7 +152,7 @@ function renderLista(resultados, ltv, conVinc) {
               ${logo}
               <div>
                 <h3>${escapar(o.entidad)} ${etiqueta}</h3>
-                <p class="meta">${escapar(o.producto)}<span class="sep">·</span>${ETIQUETA_TIPO[o.tipo]}${textoMotivo ? `<span class="sep">·</span>${escapar(textoMotivo)}` : ""}</p>
+                <p class="meta">${escapar(o.producto)}<span class="sep">·</span>${ETIQUETA_TIPO[o.tipo]}${o.verificada ? "" : `<span class="sep">·</span>Sin verificar con la entidad`}${textoMotivo ? `<span class="sep">·</span>${escapar(textoMotivo)}` : ""}</p>
               </div>
             </div>
             <details class="condiciones">
@@ -205,7 +205,7 @@ function actualizar() {
   $("#ltv").textContent = `${ltv.toFixed(0)} %`;
 
   const seguroAnual = estado.datos?.seguro_anual_estimado ?? 0;
-  const candidatas = (estado.datos?.ofertas ?? []).filter((o) => f.tipo === "todas" || o.tipo === f.tipo);
+  const candidatas = (estado.datos?.ofertas ?? []).filter((o) => !o.marcador && (f.tipo === "todas" || o.tipo === f.tipo));
   const resultados = candidatas
     .map((o) => {
       const e = evaluarOferta(o, {
@@ -222,11 +222,12 @@ function actualizar() {
 
   const aptas = resultados.filter((r) => r.apta);
   $("#aptas").textContent = `${aptas.length} de ${resultados.length}`;
-  // Lo que sale el piso en total con la mejor oferta: precio + gastos de compra + intereses, comisiones y seguros.
-  const mejor = aptas[0];
+  // La mejor oferta sale solo entre las verificadas con la entidad.
+  // Lo que sale el piso en total: precio + gastos de compra + intereses, comisiones y seguros.
+  const mejor = aptas.find((r) => r.oferta.verificada);
   $("#total-piso").textContent = mejor ? eur(f.precio + f.gastos + mejor.eval.costeTotal) : "—";
 
-  if (aptas[0]) animarCifra($("#cuota-mejor"), aptas[0].eval.cuota);
+  if (mejor) animarCifra($("#cuota-mejor"), mejor.eval.cuota);
   else $("#cuota-mejor").textContent = "–";
 
   renderLista(resultados, ltv, f.conVinculacion);
@@ -235,14 +236,17 @@ function actualizar() {
 
 function pintarReferencia() {
   const ref = estado.referencia;
+  const largo = (f) => new Date(f).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
+  // El Euríbor se muestra con tres decimales, como su dato de cierre (3,302 %).
+  const euribor = new Intl.NumberFormat("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 3 });
   const partes = [];
   if (ref.euribor12m != null) {
-    const fecha = ref.euribor12mPeriodo ? ` (${new Date(ref.euribor12mPeriodo).toLocaleDateString("es-ES")})` : "";
-    partes.push(`Euríbor 12 meses ${pct(ref.euribor12m)}${fecha}`);
+    const fecha = ref.euribor12mPeriodo ? ` (${largo(ref.euribor12mPeriodo)})` : "";
+    partes.push(`Euríbor 12 meses ${euribor.format(ref.euribor12m)} %${fecha}`);
   } else {
     partes.push("Euríbor sin dato");
   }
-  if (ref.actualizado) partes.push(`indicadores actualizados ${new Date(ref.actualizado).toLocaleDateString("es-ES")}`);
+  if (ref.actualizado) partes.push(`indicadores actualizados ${largo(ref.actualizado)}`);
   $("#nota-datos").textContent = partes.join(" · ");
 }
 

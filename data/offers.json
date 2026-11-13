@@ -21,7 +21,8 @@
       "fuente": "https://www.ibercaja.es/particulares/hipotecas-prestamos/hipotecas/hipoteca-vamos-fija/",
       "fuente_nombre": "Ibercaja (web oficial) · 5-nov-2026",
       "nota": "Oficial: TAE bonificada 3,49 % (TIN 2,55 %) incluye hogar 242,33 €/año y vida 400 €/año. Sin bonificación: TAE 3,80 %.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": true
     },
     {
       "id": "banca-march-avantio",
@@ -41,7 +42,8 @@
       "fuente": "https://avantio.bancamarch.es/es/financiacion/hipoteca-fija/",
       "fuente_nombre": "Banca March Avantio (web oficial) · 5-nov-2026",
       "nota": "Oficial: la web muestra 3,80 % TIN / 4,18 % TAE con máxima bonificación y hasta 4,50 % TIN / 4,66 % TAE sin ella. Los comparadores dan 2,65 % TIN / 3,01 % TAE: NO coincide con la web oficial, se usa la oficial. Prima de seguros no publicada.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": true
     },
     {
       "id": "sabadell-fija",
@@ -61,7 +63,8 @@
       "fuente": "Web oficial de Banco Sabadell (URL exacta pendiente de registrar; cifras verificadas en sesión anterior)",
       "fuente_nombre": "Banco Sabadell (web oficial) · 5-nov-2026",
       "nota": "Oficial: TAE 3,67 % (los comparadores dan 3,58 %). Seguros oficiales: hogar 12,99 €/mes (155,88 €/año), vida 63,38 €/trimestre (253,52 €/año) y protección de pagos 340 €/año: total ≈ 749 €/año.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": true
     },
     {
       "id": "openbank-fija",
@@ -81,7 +84,8 @@
       "fuente": "https://www.openbank.es/hipoteca-fija",
       "fuente_nombre": "Openbank (web oficial) · 5-nov-2026",
       "nota": "Oficial: desde 2,80 % TIN (3,41 % TAE) con bonificación; desde 3,30 % TIN (3,60 % TAE) sin ella. La web no especifica el plazo de cada tramo; el dato de plazo 25 años es orientativo.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": true
     },
     {
       "id": "bbva-fija",
@@ -101,7 +105,8 @@
       "fuente": "https://www.bbva.es/personas/productos/hipotecas/hipoteca-fija.html",
       "fuente_nombre": "BBVA (web oficial) · 5-nov-2026",
       "nota": "Oficial: desde 3,85 % TIN sin bonificación a 15 años (TAE 4,59 %), 3,95 % TIN a 20-30 años (TAE 4,60-4,66 %). Bonificación total de hasta 1 %. Ejemplo oficial con bonificación: desde 2,85 % TIN y 3,76 % TAE. Los 2,95 % TIN de comparadores no coinciden con la web.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": true
     },
     {
       "id": "santander-fija",
@@ -121,7 +126,8 @@
       "fuente": "https://escaparates.bancosantander.es/sanflix/oneweb/es/retail/financiacion/Hipotecas/Hipoteca-fija.html",
       "fuente_nombre": "Santander (web oficial) · 5-nov-2026",
       "nota": "Oficial: 2,96 % TIN los 6 primeros meses; 3,96 % TIN después sin condiciones (TAE 4,16 %) o 2,96 % con condiciones (TAE 3,65 %). Seguro de 600 €/año = hogar 300 € + protección de préstamos 300 € del ejemplo oficial. Oferta válida hasta el 15-nov-2026.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": true
     },
     {
       "id": "caixabank-casafacil-fija",
@@ -141,7 +147,8 @@
       "fuente": "https://www.caixabank.es/particular/hipotecas/casafacil.html",
       "fuente_nombre": "CaixaBank (web oficial) · 5-nov-2026",
       "nota": "Oficial: con bonificación máxima (1 %) 2,80 % TIN / 4,40 % TAE; sin bonificación 3,80 % TIN / 4,339 % TAE (TIN de 2,85 % y 3,85 % a 30 años según el simulador). El seguro de daños es obligatorio; la web no publica su prima.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": true
     },
     {
       "id": "unicaja-fija",
@@ -161,7 +168,8 @@
       "fuente": "Web oficial de Unicaja (URL exacta pendiente de registrar; cifras verificadas en sesión anterior)",
       "fuente_nombre": "Unicaja (web oficial) · 5-nov-2026",
       "nota": "Oficial: 3,20 % TIN tras 6 meses con bonificación (TAE 4,19 % a 25 años); sin bonificación 4,20 % TIN (TAE 4,34 %). Comisión de apertura 0,15 %. Los 2,00 % TIN de comparadores no coinciden con la web.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": true
     },
     {
       "id": "cajamar-hipoteon-fija",
@@ -181,7 +189,8 @@
       "fuente": "https://roams.es/actualidad/finanzas/cajamar-recupera-hipoteca-fija-esto-exige-a-cambio/",
       "fuente_nombre": "Roams (comparador) · 2026",
       "nota": "NO VERIFICADA en web oficial: la página de Cajamar no permitió leer sus tipos. Dato de comparador (Roams y HelpMyCash, relanzamiento de agosto de 2026).",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": false
     },
     {
       "id": "myinvestor-sin-mochila",
@@ -201,7 +210,8 @@
       "fuente": "https://myinvestor.es/hipotecas/hipoteca-fija/",
       "fuente_nombre": "MyInvestor (web oficial) · 5-nov-2026",
       "nota": "Oficial: 3,40 % TIN / 3,61 % TAE sin seguros ni productos obligatorios. Importe mínimo 100.000 €.",
-      "seguro_vinculado": false
+      "seguro_vinculado": false,
+      "verificada": true
     },
     {
       "id": "bankinter-fija",
@@ -221,7 +231,8 @@
       "fuente": "Web oficial de Bankinter (URL exacta pendiente de registrar; cifras verificadas en sesión anterior)",
       "fuente_nombre": "Bankinter (web oficial) · 5-nov-2026",
       "nota": "Oficial: 3,50 % TIN / 4,09 % TAE a 30 años con bonificación; sin ella 4,80 % TIN / 5,16 % TAE. TAE de 4,12 % a 25 años y 4,15 % a 20 años. Los 3,20 % TIN de comparadores no coinciden con la web.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": true
     },
     {
       "id": "kutxabank-variable",
@@ -241,7 +252,8 @@
       "vinculaciones": "no especificadas en la fuente",
       "fuente": "https://www.rankia.com/blog/mejores-hipotecas/5725793-mejores-hipotecas",
       "fuente_nombre": "Rankia (comparador) · nov. 2026",
-      "nota": "NO VERIFICADA en web oficial: la ficha de Kutxabank no publica tipos. Dato de comparador: euríbor + 0,49 %. Primer año fijo al 2,27 % según la misma fuente."
+      "nota": "NO VERIFICADA en web oficial: la ficha de Kutxabank no publica tipos. Dato de comparador: euríbor + 0,49 %. Primer año fijo al 2,27 % según la misma fuente.",
+      "verificada": false
     },
     {
       "id": "caja-ingenieros-fija",
@@ -261,7 +273,8 @@
       "fuente": "https://www.kelisto.es/hipotecas/bancos/caja-de-ingenieros",
       "fuente_nombre": "Kelisto (comparador) · jun. 2026",
       "nota": "NO VERIFICADA en web oficial: la web de Caja de Ingenieros no cargó. Dato de comparador: 2,70 % TIN (3,41 % TAE) con requisitos y 3,70 % TIN (4,25 % TAE) sin ellos.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": false
     },
     {
       "id": "imagin-fija",
@@ -281,7 +294,8 @@
       "fuente": "https://www.helpmycash.com/hipotecas/imaginbank/hipoteca-fija-imaginbank",
       "fuente_nombre": "HelpMyCash (comparador) · nov. 2026",
       "nota": "NO VERIFICADA en web oficial: la web de imagin no cargó. Dato de comparador: 3,05 % TIN (3,77 % TAE) con vinculación y 3,80 % TIN (4,29 % TAE) sin ella.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "verificada": false
     },
     {
       "id": "abanca-mari-carmen-fija",
@@ -300,7 +314,8 @@
       "vinculaciones": "Sin detalle verificado: consultar con la entidad",
       "fuente": "Web oficial de Abanca (URL exacta pendiente de registrar; cifras verificadas en sesión anterior)",
       "fuente_nombre": "Abanca (web oficial) · 5-nov-2026",
-      "nota": "Oficial a 15 años: 3,35 % TIN / 5,83 % TAE con bonificación; 4,35 % TIN / 5,02 % TAE sin ella. Los 2,85 % de comparadores no coinciden con la web. Plazo de referencia: 15 años."
+      "nota": "Oficial a 15 años: 3,35 % TIN / 5,83 % TAE con bonificación; 4,35 % TIN / 5,02 % TAE sin ella. Los 2,85 % de comparadores no coinciden con la web. Plazo de referencia: 15 años.",
+      "verificada": true
     },
     {
       "id": "promotora-bbva-pendiente",
@@ -320,7 +335,8 @@
       "fuente": "",
       "fuente_nombre": "Pendiente de la promotora",
       "nota": "Marcador sin datos. Rellenar con la oferta por escrito antes de la firma.",
-      "seguro_vinculado": true
+      "seguro_vinculado": true,
+      "marcador": true
     }
   ]
 }
