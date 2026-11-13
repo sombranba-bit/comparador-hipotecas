@@ -43,11 +43,19 @@ export function evaluarOferta(o, { capital, anios, euribor, conVinculacion, segu
   return { disponible: true, tin, tae, cuota, costeTotal, aptaPlazo: o.plazo_max == null || anios <= o.plazo_max };
 }
 
+// Importes en euros: se escriben con puntos de miles (231.440) y se leen solo sus dígitos.
+const CAMPOS_IMPORTE = ["precio", "gastos", "ahorro"];
+const importe = (el) => Number(el.value.replace(/\D/g, "")) || 0;
+function formatearImporte(el) {
+  const n = importe(el);
+  el.value = n ? n.toLocaleString("es-ES") : "";
+}
+
 function leerFormulario() {
   return {
-    precio: Math.max(0, Number($("#precio").value) || 0),
-    ahorro: Math.max(0, Number($("#ahorro").value) || 0),
-    gastos: Math.max(0, Number($("#gastos").value) || 0),
+    precio: importe($("#precio")),
+    ahorro: importe($("#ahorro")),
+    gastos: importe($("#gastos")),
     anios: Number($("#plazo").value),
     tipo: $("#tipo").value,
     conVinculacion: $("#vinc").value === "si",
@@ -279,8 +287,8 @@ function leerUrl() {
     } else if (id === "plazo") {
       const n = Number(v);
       if (Number.isInteger(n) && n >= 5 && n <= 40) el.value = String(n);
-    } else if (Number.isFinite(Number(v)) && Number(v) >= 0) {
-      el.value = String(Number(v));
+    } else if (Number.isInteger(Number(v)) && Number(v) >= 0) {
+      el.value = Number(v).toLocaleString("es-ES");
     }
   }
 }
@@ -289,7 +297,9 @@ function guardarUrl() {
   const params = new URLSearchParams();
   for (const [clave, id] of Object.entries(CAMPOS_URL)) {
     const el = $(`#${id}`);
-    if (el.value !== valoresIniciales[id]) params.set(clave, el.value);
+    const valor = CAMPOS_IMPORTE.includes(id) ? String(importe(el)) : el.value;
+    const inicial = CAMPOS_IMPORTE.includes(id) ? String(Number(valoresIniciales[id].replace(/\D/g, ""))) : valoresIniciales[id];
+    if (valor !== inicial) params.set(clave, valor);
   }
   const query = params.toString();
   try {
@@ -352,6 +362,8 @@ async function iniciar() {
   $("#tipo").addEventListener("change", actualizar);
   $("#vinc").addEventListener("change", actualizar);
   $("#reiniciar").addEventListener("click", restablecer);
+  // Al escribir, los importes se reformatean antes de recalcular (el listener del formulario va después).
+  for (const id of CAMPOS_IMPORTE) $(`#${id}`).addEventListener("input", (e) => formatearImporte(e.target));
   iniciarPestanas();
   // Si un icono no carga, se cambia por la inicial de la entidad.
   $("#lista").addEventListener("error", (e) => {
