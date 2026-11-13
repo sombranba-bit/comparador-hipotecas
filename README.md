@@ -40,7 +40,7 @@ El workflow `actualizar-datos.yml` se ejecuta cada día a las 06:17 UTC, actuali
 
 ## Privacidad
 
-- Los logotipos sin archivo local se piden a `google.com/s2/favicons` con el dominio de la entidad. Google puede saber que alguien ha abierto la página. Si no se quiere, basta con borrar esa ruta en `logoEntidad()` (`assets/app.js`); se verán las iniciales.
+- Los logotipos sin archivo local se piden a `google.com/s2/favicons` con el dominio de la entidad. Google puede saber que alguien ha abierto la página. Para evitarlo, pon un logo local en `assets/logos/` y indica su ruta en el campo `logo` de la oferta en `data/offers.json`; sin logo local ni Google, se ven las iniciales.
 - No hay Content-Security-Policy: GitHub Pages no permite cabeceras, y una etiqueta `meta` con CSP bloquearía el script y los estilos incrustados de la versión de un solo archivo.
 - Las fuentes se cargan de Google Fonts.
 

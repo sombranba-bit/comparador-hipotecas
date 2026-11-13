@@ -98,17 +98,14 @@ function monograma(o) {
   return `<span class="monograma" aria-hidden="true">${escapar(iniciales(o.entidad))}</span>`;
 }
 
-// Orden de búsqueda del logo: archivo local (assets/logos/<dominio>.png o .svg), icono de Google y, si nada carga, la inicial.
+// Logo: el archivo indicado en offers.json (campo `logo`) si existe; si no, el icono de Google
+// para el dominio y, si tampoco carga, la inicial. Para añadir un logo local, pon su ruta en `logo`.
 function logoEntidad(o) {
-  if (o.logo) return `<img class="logo" src="${escapar(o.logo)}" alt="" width="34" height="34" decoding="async">`;
+  if (o.logo) return `<img class="logo" src="${escapar(o.logo)}" alt="" width="34" height="34" decoding="async" data-iniciales="${escapar(iniciales(o.entidad))}">`;
   const dominio = DOMINIOS[o.entidad];
   if (!dominio) return monograma(o);
-  const rutas = [
-    `assets/logos/${dominio}.png`,
-    `assets/logos/${dominio}.svg`,
-    `https://www.google.com/s2/favicons?domain=${encodeURIComponent(dominio)}&sz=64`,
-  ];
-  return `<img class="logo" src="${rutas[0]}" alt="" width="34" height="34" decoding="async" data-resto="${escapar(JSON.stringify(rutas.slice(1)))}" data-iniciales="${escapar(iniciales(o.entidad))}">`;
+  const ruta = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(dominio)}&sz=64`;
+  return `<img class="logo" src="${ruta}" alt="" width="34" height="34" decoding="async" data-iniciales="${escapar(iniciales(o.entidad))}">`;
 }
 
 function motivo(r, ltv) {
